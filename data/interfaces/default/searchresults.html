@@ -1,0 +1,95 @@
+<%inherit file="base.html" />
+
+<%def name="body()">
+
+    <!--<div id="paddingheader">
+        <h1>Search Results<h1>
+    </div>-->
+
+    <p class="leftside" >
+    <form action="addResults" method="get">
+            <select name="action" hidden="true">
+                  <option value="author">Add Author</option>
+<!--                  <option value="book">Add Book</option>-->
+            </select>
+        <input style="margin-left:30px;margin-bottom:10px;" type="submit" value="Add selected author" id="add">
+    </p>
+
+    <table class="display" id="book_table">
+        <thead>
+            <tr>
+				<th id="select"><input type="checkbox" onClick="toggle(this)" /></th>
+				<th id="bookart">Cover</th>
+				<th id="authorname">Author</th>
+				<th id="bookname">Title</th>
+				<th id="date">Released</th>
+				<th id="stars">Rating</th>
+             </tr>
+        </thead>
+
+        <tbody>
+            %if searchresults:
+                %for result in searchresults:
+                	<%
+                    if result['bookrate'] < 0.5:
+                        starimg = '0-stars.png'
+                    elif result['bookrate'] >= 0.5 and result['bookrate'] < 1.5:
+                        starimg = '1-stars.png'
+                    elif result['bookrate'] >= 1.5 and result['bookrate'] < 2.5:
+                        starimg = '2-stars.png'
+                    elif result['bookrate'] >= 2.5 and result['bookrate'] < 3.5:
+                        starimg = '3-stars.png'
+                    elif result['bookrate'] >= 3.5 and result['bookrate'] < 4.5:
+                        starimg = '4-stars.png'
+                    elif result['bookrate'] >= 4.5:
+                        starimg = '5-stars.png'
+                    else:
+                        starimg = '0-stars.png'
+                %>
+					<tr class="gradeZ">
+						<td id="select"><input type="checkbox" name="${result['authorname']}&${result['bookid']}" class="checkbox" /></td>
+						<td id="bookart"><a href="${result['bookimg']}" target="_new"><img src="${result['bookimg']}" height="75" ></a></td>
+						<td id="authorname">${result['authorname']}</td>
+						<td id="bookname"><a href="${result['booklink']}" target="_new">${result['bookname']}</a></td>
+						<td id="date">${result['bookdate']}</td>
+						<td id="stars"><img src="images/${starimg}" height="10"></td>
+					</tr>
+				%endfor
+            %endif
+        </tbody>
+    </table>
+    </form>
+</%def>
+
+<%def name="headIncludes()">
+    <link rel="stylesheet" href="css/data_table.css">
+</%def>
+
+<%def name="javascriptIncludes()">
+    <script src="js/libs/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function()
+    {
+        $('#book_table').dataTable(
+            {
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                    ],
+                "oLanguage": {
+                    "sLengthMenu":"Show _MENU_ books per page",
+                    "sEmptyTable": "No books found",
+                    "sInfo":"Showing _START_ to _END_ of _TOTAL_ results",
+                    "sInfoEmpty":"Showing 0 to 0 of 0 books",
+                    "sInfoFiltered":"(filtered from _MAX_ total books)"},
+                "iDisplayLength": 10,
+                "sPaginationType": "full_numbers",
+            });
+			$('.dataTables_filter input').attr("placeholder", "Seach table here");
+    });
+    </script>
+</%def>

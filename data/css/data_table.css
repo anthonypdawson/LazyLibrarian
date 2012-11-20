@@ -1,0 +1,360 @@
+.dataTables_wrapper {
+	width: 95%;
+	margin: 20px auto 0 auto;
+	margin-top:30px;
+	margin-bottom:0px;
+	padding-bottom: 0px;
+	position: relative;
+	min-height: 155px;
+	clear: both;
+	_height: 302px;
+	zoom: 1; /* Feeling sorry for IE */
+	padding-bottom:50px;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 20px;
+	height: 30px;
+	margin-left: -125px;
+	margin-top: -15px;
+	padding: 14px 0 2px 0;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	background-color: #f9f9f9;
+}
+
+
+
+.dataTables_length {
+	width: 40%;
+	float: left;
+	margin-top:-30px;
+}
+
+.dataTables_filter {
+	width: 50%;
+	float: right;
+	text-align: right;
+	margin-top: -30px;
+}
+
+.dataTables_filter input {
+	background-color: #F5F6F8;
+	border:1px solid #cecece;
+	line-height:16px;
+	padding:3px;
+}
+
+.dataTables_info {
+	width: 50%;
+	float: left;
+	//background-color: #F9F9F9;
+	font-weight: bold;
+	padding-top:15px;
+}
+
+.dataTables_paginate {
+	width: 44px;
+	* width: 50px;
+	float: right;
+	text-align: right;
+	//background-color: #F9F9F9;
+	padding-top:15px;
+}
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+}
+
+.paginate_disabled_previous {
+	background-image: url('../images/back_disabled.jpg');
+}
+
+.paginate_enabled_previous {
+	background-image: url('../images/back_enabled.jpg');
+}
+
+.paginate_disabled_next {
+	background-image: url('../images/forward_disabled.jpg');
+}
+
+.paginate_enabled_next {
+	background-image: url('../images/forward_enabled.jpg');
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables display
+ */
+table.display {
+	width:100%;
+	clear: both;
+	
+	/* Note Firefox 3.5 and before have a bug with border-collapse
+	 * ( https://bugzilla.mozilla.org/show%5Fbug.cgi?id=155955 ) 
+	 * border-spacing: 0; is one possible option. Conditional-css.com is
+	 * useful for this kind of thing
+	 *
+	 * Further note IE 6/7 has problems when calculating widths with border width.
+	 * It subtracts one px relative to the other browsers from the first column, and
+	 * adds one to the end...
+	 *
+	 * If you want that effect I'd suggest setting a border-top/left on th/td's and 
+	 * then filling in the gaps with other borders.
+	 */
+}
+
+table.display thead th {
+	padding: 3px 18px 3px 10px;
+	background-color: white;
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+table.display tfoot th {
+	padding: 3px 18px 3px 10px;
+	border-top: 1px solid black;
+	font-weight: bold;
+}
+
+table.display tr.heading2 td {
+	border-bottom: 1px solid #aaa;
+}
+
+table.display td {
+	padding: 3px 10px;
+	font-size: 16px;
+}
+
+table.display td.center {
+	text-align: center;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url('../images/sort_asc.png') no-repeat center right;
+}
+
+.sorting_desc {
+	background: url('../images/sort_desc.png') no-repeat center right;
+}
+
+.sorting {
+	background: url('../images/sort_both.png') no-repeat center right;
+}
+
+.sorting_asc_disabled {
+	background: url('../images/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sorting_desc_disabled {
+	background: url('../images/sort_desc_disabled.png') no-repeat center right;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables row classes
+ */
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.odd.gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.even.gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.odd.gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.even.gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.odd.gradeU {
+	background-color: #ddd;
+}
+
+table.display tr.even.gradeU {
+	background-color: #eee;
+}
+
+table.display tr.gradeZ {
+	
+}
+
+table.display tr.odd.gradeZ {
+	background-color: #f5f6f8;
+	border-top:#e5e5e6 1px solid;
+	border-bottom:#e5e5e6 1px solid;
+	border-right:#DBDBDB 1px solid;
+	border-left:#DBDBDB 1px solid;
+}
+
+table.display tr.even.gradeZ {
+	background-color: #f8faf9;
+	border-top:#e5e5e6 1px solid;
+	border-bottom:#e5e5e6 1px solid;
+	border-right:#DBDBDB 1px solid;
+	border-left:#DBDBDB 1px solid;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+.dataTables_scroll {
+	clear: both;
+}
+
+.dataTables_scrollBody {
+	*margin-top: -1px;
+}
+
+.top, .bottom {
+	padding: 15px;
+	background-color: #F5F5F5;
+	border: 1px solid #CCCCCC;
+}
+
+.top .dataTables_info {
+	float: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.dataTables_empty {
+	font-size: 24px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: white; 
+	height: 50px;
+	width: 90%;
+}
+
+tfoot input {
+	margin: 0.5em 0;
+	width: 100%;
+	color: #444;
+}
+
+tfoot input.search_init {
+	color: #999;
+}
+
+td.group {
+	background-color: #d1cfd0;
+	border-bottom: 2px solid #A19B9E;
+	border-top: 2px solid #A19B9E;
+}
+
+td.details {
+	background-color: #d1cfd0;
+	border: 2px solid #A19B9E;
+}
+
+.paging_full_numbers {
+	width: 500px;
+	height: 22px;
+	line-height: 22px;
+}
+
+.paging_full_numbers span.paginate_button,
+ 	.paging_full_numbers span.paginate_active {
+	border-radius: 2px;
+	line-height: 29px;
+	padding: 0 10px;
+	margin:5px;
+	padding-top:3px;
+	padding-bottom:3px;
+	margin-left:8px;
+}
+
+.paging_full_numbers span.paginate_button {
+	background-color: #ebebeb;
+	border: 1px solid #cecece;
+	color: #444454 !important;
+
+}
+
+.paging_full_numbers span.paginate_button:hover {
+	background-color: #4D90FE;
+	border: 1px solid #3079ED;
+	color: white !important;
+}
+
+.paging_full_numbers span.paginate_active {
+	background-color: #4D90FE;
+	border: 1px solid #3079ED;
+	color: white !important;
+}
+
+table.display tr.even.row_selected td {
+	background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+	background-color: #9FAFD1;
+}
+
+div.box {
+	height: 100px;
+	padding: 10px;
+	overflow: auto;
+	border: 1px solid #8080FF;
+	background-color: #E5E5FF;
+}
+
+thead {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F6F6F6', endColorstr='#E8E8E8');
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F6), to(#E8E8E8));
+	background: -moz-linear-gradient(top,  #F6F6F6,  #E8E8E8);
+}
+
+table.display thead th  {
+	width: 100%;
+	
+	margin-bottom:0px;
+	height:30px;
+	background: #999; /* for non-css3 browsers */
+	border:#DBDBDB 1px solid;
+	border-bottom:0px;
+	line-height: 30px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F6F6F6', endColorstr='#E8E8E8');
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F6), to(#E8E8E8));
+	background: -moz-linear-gradient(top,  #F6F6F6,  #E8E8E8);	
+	border-bottom:#DBDBDB 1px solid;
+}

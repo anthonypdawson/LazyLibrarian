@@ -1,0 +1,101 @@
+<%
+    import lazylibrarian
+%>
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>LazyLibrarian - ${title}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+    <link rel="shortcut icon" type="image/png"  href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/templogo.png">
+    <link rel="stylesheet" href="css/style.css?v=2">
+    ${next.headIncludes()}
+
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/libs/modernizr-1.7.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/jquery.clearsearch.js"></script>
+	<script>
+	// Edit to suit your needs.
+	var ADAPT_CONFIG = {
+	  // Where is your CSS?
+	  path: 'css/',
+
+	  // false = Only run once, when page first loads.
+	  // true = Change on window resize and page tilt.
+	  dynamic: true,
+
+	  // First range entry is the minimum.
+	  // Last range entry is the maximum.
+	  // Separate ranges by "to" keyword.
+	  range: [
+	    '0px    to 320px  = mobile.css',
+		'321px    to 640px  = iphone4_portrait.css',
+		'641px  to 768px  = ipad_portrait.css',
+		'768px  to 1024px  = ipad_landscape.css',
+	    '1024px  to 2540px  = style.css',
+	  ]
+	};
+	</script>
+	<script src="js/adapt.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div id="logo">
+                <a href="home"><img src="images/lazylibrarian.png" heigth="64" width="83" alt="lazylibrarian"></a>
+            </div>
+            <ul id="nav">
+                <li ><a href="home" ><div id="home" class="authorsActive"></div></a></li>
+                <li><a href="books" ><div id="books" class="books"></div></a></li>
+                <li><a href="logs" ><div id="logs" class="logs"></div></a></li>
+                <li><a href="config" ><div id="config" class="config"></div></a></li>
+            </ul>
+            <div id="searchbar">
+                <form action="search" method="get">
+                    <input type="text" value="" onfocus="if(this.value==this.defaultValue) this.value='';" name="name" placeholder="Search for a new author" class="clearable" id="searchbox" />
+                    <select name="type" hidden="true">
+                          <option value="author">Author</option>
+                          <option value="book">Book</option>
+                    </select>
+                    <input type="submit" value="Add"/>
+                </form>
+            </div>
+            <div id="subhead">
+                ${next.headerIncludes()}
+            </div>
+        </header>
+
+        <div id="main" class="main">
+            ${next.body()}
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.6.2.min.js"%3E%3C/script%3E'))</script>
+    ${next.javascriptIncludes()}
+    
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+
+    <!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script> DD_belatedPNG.fix('img, .png_bg');</script>
+    <![endif]-->
+</body>
+</html>
+
+<%def name="javascriptIncludes()"></%def>
+<%def name="headIncludes()"></%def>
+<%def name="headerIncludes()"></%def>

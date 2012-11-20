@@ -1,0 +1,106 @@
+<%inherit file="base.html" />
+<%!
+    import lazylibrarian
+    from lazylibrarian.formatter import checked
+%>
+
+<%def name="headerIncludes()">
+    <div id="subhead_container">
+        <ul id="subhead_menu">
+            %if len(languages) > 1:
+                <li>Language:&nbsp</li>
+                %for language in languages:
+                    <li>|</li>
+                    <li  id="button"><a href="books?BookLang=${language['BookLang']}">${language['BookLang']}</a></li>
+                %endfor
+            %endif
+            <li ><a id="button" href="manProcess">Manual Processing</a></li>
+        </ul>
+    </div>
+</%def>
+
+<%def name="body()">
+	<br><br>
+    <table class="display" id="book_table">
+        <thead>
+            <tr>
+                <th id="bookart">Cover</th>
+                <th id="authorname">Author</th>
+                <th id="bookname">Title</th>
+                <th id="stars">Rating</th>
+                <th id="date">Released</th>
+                <th id="language" hidden="true">Language</th>
+                <th id="status">Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        %for result in books:
+                <%
+                    if result['bookrate'] < 0.5:
+                        starimg = '0-stars.png'
+                    elif result['bookrate'] >= 0.5 and result['bookrate'] < 1.5:
+                        starimg = '1-stars.png'
+                    elif result['bookrate'] >= 1.5 and result['bookrate'] < 2.5:
+                        starimg = '2-stars.png'
+                    elif result['bookrate'] >= 2.5 and result['bookrate'] < 3.5:
+                        starimg = '3-stars.png'
+                    elif result['bookrate'] >= 3.5 and result['bookrate'] < 4.5:
+                        starimg = '4-stars.png'
+                    elif result['bookrate'] >= 4.5:
+                        starimg = '5-stars.png'
+                    else:
+                        starimg = '0-stars.png'
+                %>
+                <tr class="gradeZ">
+                    <td id="bookart"><a href="${result['bookimg']}" target="_new"><img src="${result['bookimg']}" height="75" width="50"></a></td>
+                    <td id="authorname"><a href="authorPage?AuthorName=${result['AuthorName']}">${result['authorname']}</a></td>
+                    %if result['booksub']:
+                        <td id="bookname"><a href="${result['booklink']}" target="_new">${result['bookname']}</a><br>
+                        <i class="smalltext">${result['booksub']}</i></td>
+                    %else:
+                        <td id="bookname"><a href="${result['booklink']}" target="_new">${result['bookname']}</a></td>
+                    %endif
+                    <td id="stars"><img src="images/${starimg}" width="50" height="10"></td>
+                    <td id="date">${result['BookDate']}</td>
+                    <td id="language" hidden="true">${result['booklang']}</td>
+                    <td id="status">${result['Status']}</td>
+                </tr>
+        %endfor
+        </tbody>
+    </table>
+</%def>
+
+<%def name="headIncludes()">
+    <link rel="stylesheet" href="css/data_table.css">
+</%def>
+
+<%def name="javascriptIncludes()">
+    <script src="js/libs/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function()
+    {
+        $('#book_table').dataTable(
+            {
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                    ],
+                "oLanguage": {
+                    "sLengthMenu":"Show _MENU_ books per page",
+                    "sEmptyTable": "No books found",
+                    "sInfo":"Showing _START_ to _END_ of _TOTAL_ results",
+                    "sInfoEmpty":"Showing 0 to 0 of 0 books",
+                    "sInfoFiltered":"(filtered from _MAX_ total books)"},
+                "iDisplayLength": 10,
+                "sPaginationType": "full_numbers",
+            });
+			$('.dataTables_filter input').attr("placeholder", "Seach table here");
+    });
+    </script>
+</%def>
