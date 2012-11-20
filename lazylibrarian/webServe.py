@@ -243,8 +243,8 @@ class WebInterface(object):
         dest_dir = lazylibrarian.DESTINATION_DIR + '\\' + bookdata[0]["AuthorName"] + '\\' + bookdata[0]["BookName"]
         for file2 in os.listdir(dest_dir):
 			logger.info('file ' + str(file2))
-				if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
-					return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
+			if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
+				return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
     openBook.exposed = True
 
     def markBooks(self, AuthorName=None, action=None, **args):
