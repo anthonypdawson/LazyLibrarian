@@ -11,10 +11,8 @@ branch = "master"
 
 def runGit(args):
 
-    if lazylibrarian.GIT_PATH:
-        git_locations = ['"'+ lazylibrarian.GIT_PATH +'"']
-    else:
-        git_locations = ['git']
+
+    git_locations = ['git']
         
     if platform.system().lower() == 'darwin':
         git_locations.append('/usr/local/git/bin/git')

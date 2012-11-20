@@ -36,6 +36,9 @@ class WebInterface(object):
     index.exposed=True
 
     def home(self):
+        from lazylibrarian import versioncheck
+        lazylibrarian.CURRENT_VERSION = versioncheck.getVersion()
+        versioncheck.checkGithub()
         myDB = database.DBConnection()
         authors = myDB.select('SELECT * from authors order by AuthorName COLLATE NOCASE')
         return serve_template(templatename="index.html", title="Home", authors=authors)
@@ -93,6 +96,7 @@ class WebInterface(object):
                     "newzbin_uid" :     lazylibrarian.NEWZBIN_UID,
                     "newzbin_pass" :    lazylibrarian.NEWZBIN_PASS,
                     "ebook_type" :		lazylibrarian.EBOOK_TYPE,
+                    "git_path" :		lazylibrarian.GIT_PATH,
                 }
         return serve_template(templatename="config.html", title="Settings", config=config)    
     config.exposed = True
@@ -138,6 +142,7 @@ class WebInterface(object):
         lazylibrarian.NEWZBIN_UID = newzbin_uid
         lazylibrarian.NEWZBIN_PASS = newzbin_pass
         lazylibrarian.EBOOK_TYPE = ebook_type
+        lazylibrarian.GIT_PATH = git_path
 
         lazylibrarian.config_write()
 
