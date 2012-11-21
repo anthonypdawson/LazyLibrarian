@@ -142,7 +142,6 @@ class WebInterface(object):
         lazylibrarian.NEWZBIN_UID = newzbin_uid
         lazylibrarian.NEWZBIN_PASS = newzbin_pass
         lazylibrarian.EBOOK_TYPE = ebook_type
-        lazylibrarian.GIT_PATH = git_path
 
         lazylibrarian.config_write()
 
