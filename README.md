@@ -1,6 +1,6 @@
-## LazyLibrarian
+ ## LazyLibrarian
 #### Contributers 
-* Current authors: LibrarianMike  
+* Current author: LibrarianMike  
 * Original author: Mar2zz  
 * Previous maintainer: itsmegb   
 
@@ -19,7 +19,6 @@ Right now its capable of the following:
 ##Screenshots
 <img src="http://i.imgur.com/4sQDZ.png" width="600">
 <img src="http://i.imgur.com/fr0yE.png" width="600">
-<img src="http://i.imgur.com/Wx29x.png" width="600">
 <img src="http://i.imgur.com/AOgh1.png" width="600">
 
 ## Install:  
