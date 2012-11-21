@@ -393,12 +393,20 @@ def start():
 #            print job
         started = True
 
-def shutdown(restart=False):
-    config_write()
-    logger.info('LazyLibrarian is shutting down ...')
-    cherrypy.engine.exit()
+def shutdown(restart=False, update=False):
 
-    SCHED.shutdown(wait=True)
+    cherrypy.engine.exit()
+    SCHED.shutdown(wait=False)
+    config_write()
+
+    if not restart and not update:
+        logger.info('LazyLibrarian is shutting down...')
+    if update:
+        logger.info('LazyLibrarian is updating...')
+        try:
+            versioncheck.update()
+        except Exception, e:
+            logger.warn('LazyLibrarian failed to update: %s. Restarting.' % e) 
 
     if PIDFILE :
         logger.info('Removing pidfile %s' % PIDFILE)

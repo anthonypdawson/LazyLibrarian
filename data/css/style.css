@@ -132,7 +132,7 @@ p.center { text-align: center; font-size: 10px; }
 .smalltext2 { font-size: 12px; margin-left: 45px; }
 .smalltext { font-size: 10px }
 
-div#updatebar { text-align: center; min-width: 970px; width: 100%; background-color: light-blue; float: left; }
+div#updatebar { text-align: center; width: 100%; background-color: light-blue; float: left; }
 div#logo { float: left; padding-left: 10px; }
 div#logo img { width:0px; height:0px;}
 
@@ -443,7 +443,6 @@ div#shutdown{ text-align: center; vertical-align: middle; }
   text-align: center;
   bottom: 10px;
   min-height: 22px;
-  width: 250px;
   z-index: 9999;
   filter: alpha(opacity=85);
   -moz-opacity: 0.8 !important;
@@ -455,11 +454,20 @@ div#shutdown{ text-align: center; vertical-align: middle; }
   background-image: -webkit-linear-gradient(#fcf5c2, #fff6a9) !important;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr=#fafafa, endColorstr=#eaeaea) !important;
   -ms-filter: progid:dximagetransform.microsoft.gradient(startColorstr=#fafafa, endColorstr=#eaeaea) !important;
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	margin-bottom:20px;
+	margin-right:90px;
+	min-width:100px;
+	max-width:250px;
 }
 #updatebar .msg {
   font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
   line-height: normal;
   padding-left: 20px;
+min-width:100px;
+max-width:250px;
 }
 #updatebar .loader {
   position: relative;

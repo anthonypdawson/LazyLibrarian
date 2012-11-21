@@ -150,6 +150,13 @@ class WebInterface(object):
 
     configUpdate.exposed = True
 
+    def update(self):
+        lazylibrarian.SIGNAL = 'update'
+        message = 'Updating...'
+        return serve_template(templatename="shutdown.html", title="Updating", message=message, timer=120)
+        return page
+    update.exposed = True
+
 #SEARCH
     def search(self, name, type):
         GR = GoodReads(name, type)
