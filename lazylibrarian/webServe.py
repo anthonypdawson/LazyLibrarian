@@ -32,13 +32,14 @@ def serve_template(templatename, **kwargs):
 class WebInterface(object):
 
     def index(self):
+        #check the version when the application starts
+        from lazylibrarian import versioncheck
+        lazylibrarian.CURRENT_VERSION = versioncheck.getVersion()
+        versioncheck.checkGithub()
         raise cherrypy.HTTPRedirect("home")
     index.exposed=True
 
     def home(self):
-        from lazylibrarian import versioncheck
-        lazylibrarian.CURRENT_VERSION = versioncheck.getVersion()
-        versioncheck.checkGithub()
         myDB = database.DBConnection()
         authors = myDB.select('SELECT * from authors order by AuthorName COLLATE NOCASE')
         return serve_template(templatename="index.html", title="Home", authors=authors)
@@ -96,7 +97,6 @@ class WebInterface(object):
                     "newzbin_uid" :     lazylibrarian.NEWZBIN_UID,
                     "newzbin_pass" :    lazylibrarian.NEWZBIN_PASS,
                     "ebook_type" :		lazylibrarian.EBOOK_TYPE,
-                    "git_path" :		lazylibrarian.GIT_PATH,
                 }
         return serve_template(templatename="config.html", title="Settings", config=config)    
     config.exposed = True
