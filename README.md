@@ -22,7 +22,7 @@ Right now its capable of the following:
 <img src="http://i.imgur.com/AOgh1.png" width="600">
 
 ## Install:  
-LazyLibrarian runs by default on port 8082 at http://hostname:8082/home
+LazyLibrarian runs by default on port 8082 at http://hostname:8082/
 
 Linux / Mac OS X:
 
