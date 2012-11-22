@@ -29,5 +29,10 @@ Linux / Mac OS X:
 * Install Python 2.6 or higher  
 * Git clone/extract LL wherever you like  
 * Run "python LazyLibrarian.py -daemon" to start in deamon mode  
-* Set your username & password in the settings if you want.  
+* Fill in all the config fields
+
+Windows:
+
+* Install Python 2.6 or higher
+* Double-click the Headphones.py file (you may need to right click and click 'Open With' -> Python)
 * Fill in all the config fields
