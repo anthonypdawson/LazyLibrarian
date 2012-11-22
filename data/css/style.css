@@ -498,3 +498,19 @@ max-width:250px;
   position: relative;
   margin-right: 3px;
 }
+span.deleteicon {
+    position: relative;
+}
+span.deleteicon span {
+    position: absolute;
+    display: block;
+    top: 0px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    background: url("../images/sprite1.png") left -37px no-repeat;
+    cursor: pointer;
+}
+span.deleteicon input {
+    padding-right: 16px;
+}

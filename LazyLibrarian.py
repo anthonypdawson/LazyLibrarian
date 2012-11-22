@@ -127,6 +127,11 @@ def main():
 
     lazylibrarian.start()
 
+    #check the version when the application starts
+    from lazylibrarian import versioncheck
+    lazylibrarian.CURRENT_VERSION = versioncheck.getVersion()
+    versioncheck.checkGithub()
+
     while True:
         if not lazylibrarian.SIGNAL:
 

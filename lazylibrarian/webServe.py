@@ -32,10 +32,6 @@ def serve_template(templatename, **kwargs):
 class WebInterface(object):
 
     def index(self):
-        #check the version when the application starts
-        from lazylibrarian import versioncheck
-        lazylibrarian.CURRENT_VERSION = versioncheck.getVersion()
-        versioncheck.checkGithub()
         raise cherrypy.HTTPRedirect("home")
     index.exposed=True
 

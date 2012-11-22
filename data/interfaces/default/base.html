@@ -49,6 +49,25 @@
 	};
 	</script>
 	<script src="js/adapt.min.js"></script>
+    <script>
+        // Script to add a clear button to the search author input box
+        $(document).ready(function () {
+            $('input.deletable').wrap('<span class="" id="deleteicon"/>').after($('<span/>').click(function () {
+                $(this).prev('input').val('').focus();
+                $('#deleteicon').removeClass('deleteicon');
+            }));
+
+            $('input.deletable').bind('input', function () {
+                if ($(this).val() == "") // get the current value of the input field.
+                {
+                    $('#deleteicon').removeClass('deleteicon');
+                }
+                else {
+                    $('#deleteicon').addClass('deleteicon');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="container">
@@ -76,7 +95,7 @@
             </ul>
             <div id="searchbar">
                 <form action="search" method="get">
-                    <input type="text" value="" onfocus="if(this.value==this.defaultValue) this.value='';" name="name" placeholder="Search for a new author" class="clearable" id="searchbox" />
+                    <input type="text" value="" onfocus="if(this.value==this.defaultValue) this.value='';" name="name" placeholder="Search for an author" class="deletable" id="searchbox" />
                     <select name="type" hidden="true">
                           <option value="author">Author</option>
                           <option value="book">Book</option>
