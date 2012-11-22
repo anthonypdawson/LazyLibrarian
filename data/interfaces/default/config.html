@@ -12,13 +12,19 @@
     </div>
 </%def>
 <%def name="body()">
-    <div id="paddingheader">
-        <h1>Configuration<h1>
+    <form action="configUpdate" method="post">
+    <div id="form">
+    <div id="tabs">
+		<ul>
+			<li id="tabs1" class="active"><a  href="#tabs-1" onclick="$('#tabs2').removeClass('active');$('#tabs3').removeClass('active');$('#tabs4').removeClass('active');$('.table_wrapper').hide();$('.tabs-1').parent().show();$('#tabs1').addClass('active');">Web Interface</a></li>
+			<li id="tabs2" ><a  href="#tabs-2" onclick="$('#tabs1').removeClass('active');$('#tabs3').removeClass('active');$('#tabs4').removeClass('active');$('.table_wrapper').hide();$('.tabs-2').parent().show();$('#tabs2').addClass('active');">Import Options</a></li>
+			<li id="tabs3" ><a  href="#tabs-3" onclick="$('#tabs2').removeClass('active');$('#tabs1').removeClass('active');$('#tabs4').removeClass('active');$('.table_wrapper').hide();$('.tabs-3').parent().show();$('#tabs3').addClass('active');">Download Settings</a></li>
+			<li id="tabs4" ><a  href="#tabs-4" onclick="$('#tabs2').removeClass('active');$('#tabs3').removeClass('active');$('#tabs1').removeClass('active');$('.table_wrapper').hide();$('.tabs-4').parent().show();$('#tabs4').addClass('active');">Providers</a></li>
+		</ul>
     </div>
     <div class="table_wrapper">
-        <form action="configUpdate" method="post">
-        <h2>Web Interface</h2>
-        <br>
+        
+        <div class="tabs-1">
         <table class="configtable" summary="Webinterface">
             <tr>
                 <td>
@@ -49,14 +55,12 @@
                 </td>
             </tr>
         </table>
+        </div>
     </div>
 
 
-   <p><input type="submit" value="Save changes" id="add" style="float:right;margin-right:42px;margin-bottom:10px;margin-top:10px;"></p>
-
-   <div class="table_wrapper">
-        <h2>Import Options</h2>
-        <br>
+   <div class="table_wrapper" style="display:none">
+        <div class="tabs-2">
         <table class="configtable" summary="Importsettings">
             <tr>
                 <td>
@@ -88,13 +92,12 @@
                 <i class="smalltext">Spesify one of the following options (or leave blank to search for any format): <br> epub, mobi, txt</i>
             </td>
         </table>
+        </div>
     </div>
 
-    <p><input type="submit" value="Save changes" id="add" style="float:right;margin-right:42px;margin-bottom:10px;margin-top:10px;"></p>
 
-    <div class="table_wrapper">
-        <h2>Download Settings</h2>
-        <br>
+    <div class="table_wrapper" style="display:none">
+        <div class="tabs-3">
         <table class="configtable" summary="Downloadsettings">
             <tr>
                 <td>
@@ -123,13 +126,11 @@
                 </td>
             </tr>
         </table>
+        </div>
     </div>
 
-    <p><input type="submit" value="Save changes" id="add" style="float:right;margin-right:42px;margin-bottom:10px;margin-top:10px;"></p>
-
-    <div class="table_wrapper">
-        <h2>NZB Providers</h2>
-        <br>
+    <div class="table_wrapper" style="display:none">
+        <div class="tabs-4">
         <table class="configtable" summary="Providers">
             <tr>
                 <td>
@@ -157,9 +158,11 @@
                 </td>
             </tr>
         </table>
+        </div>
     </div>
-
-    <p><input type="submit" value="Save changes" id="add" style="float:right;margin-right:42px;margin-bottom:10px;margin-top:10px;"><br><br><br><br></p>
+    <div class="table_wrapper_button">
+        <p><input type="submit" value="Save changes" id="add" style="float:right;"></p>
+    </div>
+    </div>
 </form>
-
 </%def>
