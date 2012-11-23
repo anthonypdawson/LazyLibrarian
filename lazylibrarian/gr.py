@@ -43,7 +43,7 @@ class GoodReads:
     def get_author_info(self, authorid=None):
 
         URL = 'http://www.goodreads.com/author/show/' + authorid + '.xml?' + urllib.urlencode(self.params)
-        sourcexml = ElementTree.parse(urllib2.urlopen(URL, timeout=20))
+        sourcexml = ElementTree.parse(urllib2.urlopen(URL, timeout=60))
         rootxml = sourcexml.getroot()
         resultxml = rootxml.find('author')
         author_dict = {}
@@ -66,8 +66,8 @@ class GoodReads:
 
     def get_author_books(self, authorid=None):
 
-        URL = 'http://www.goodreads.com/author/list/' + authorid + '.xml?' + urllib.urlencode(self.params)
-        sourcexml = ElementTree.parse(urllib2.urlopen(URL, timeout=20))
+        URL = 'http://www.goodreads.com/author/list/' + authorid + '.xml?' + urllib.urlencode(self.params) 
+        sourcexml = ElementTree.parse(urllib2.urlopen(URL, timeout=60))
         rootxml = sourcexml.getroot()
         resultxml = rootxml.getiterator('book')
         books_dict = []
@@ -80,60 +80,51 @@ class GoodReads:
 
             resultsCount = 0
             removedResults = 0
+            logger.info(u"url " + URL)
 
-			#CANT FIND ANY OF THE BOOKS ATTRIBUTES: SEE URL http://www.goodreads.com/author/list/4399719.xml?key=ckvsiSDsuqh7omh74ZZ6Q
-            for book in resultxml:
-	                #logger.info("Found %s " % book.find('description').text)
-	
-	                #if (book.find('publication_day').text == None):
-	                    #pubday = "01"
-	                #else:
-	                    #pubday = book.find('publication_day').text
-	
-	                #if (book.find('publication_month').text == None):
-	                    #pubmonth = "01"
-	                #else:
-	                    #pubmonth = book.find('publication_month').text
-	
-	                if (book.find('publication_year').text == None):
-	                    pubyear = "0000"
-	                else:
-	                    pubyear = book.find('publication_year').text
+            loopCount = 1;
+            while (len(resultxml)):
+				for book in resultxml:
+					if (book.find('publication_year').text == None):
+						pubyear = "0000"
+					else:
+						pubyear = book.find('publication_year').text
 
-	                authorNameResult = book.find('./authors/author/name').text
+					authorNameResult = book.find('./authors/author/name').text
 	
-	                try:
-	                    bookimg = book.find('image_url').text
-	                    if (bookimg == 'http://www.goodreads.com/assets/nocover/111x148.png'):
-	                    	bookimg = 'images/nocover.png'
-	                except KeyError:
-	                    bookimg = 'images/nocover.png'
-	                except AttributeError:
-	                    bookimg = 'images/nocover.png'
-	
-	                #pubdate = ''.join([pubyear, '-', pubmonth, '-', pubday])
-	                
-	                if not (re.match('[^\w-]', book.find('title').text)): #remove books with bad caracters in title
-	                	if not pubyear == "0000":
-	                		books_dict.append({
-	                    		'authorname': authorNameResult,
-                        		'bookid': book.find('id').text,
-                        		'bookname': book.find('title').text,
-                        		'booksub': "",
-                        		'bookisbn': book.find('isbn').text,
-                        		'bookpub': book.find('publisher').text,
-                        		'bookdate': pubyear,
-                        		'booklang': "en", #No language attribute provided by goodreads, put default as english
-                        		'booklink': book.find('link').text,
-                        		'bookrate': float(book.find('average_rating').text),
-                        		'bookimg': bookimg,
-                        		'bookpages': book.find('num_pages').text,
-                        		'bookgenre': "",
-                        		'bookdesc': book.find('description').text
-	                			})
-	                		resultsCount = resultsCount + 1
-	                else:
-						removedResults = removedResults + 1
+					try:
+						bookimg = book.find('image_url').text
+						if (bookimg == 'http://www.goodreads.com/assets/nocover/111x148.png'):
+							bookimg = 'images/nocover.png'
+					except KeyError:
+						bookimg = 'images/nocover.png'
+					except AttributeError:
+						bookimg = 'images/nocover.png'
+					if not (re.match('[^\w-]', book.find('title').text)): #remove books with bad caracters in title
+						if not pubyear == "0000":
+							books_dict.append({
+								'authorname': authorNameResult,
+								'bookid': book.find('id').text,
+								'bookname': book.find('title').text,
+								'booksub': "",
+								'bookisbn': book.find('isbn').text,
+								'bookpub': book.find('publisher').text,
+								'bookdate': pubyear,
+								'booklang': "en", #No language attribute provided by goodreads, put default as english
+								'booklink': book.find('link').text,
+								'bookrate': float(book.find('average_rating').text),
+								'bookimg': bookimg,
+								'bookpages': book.find('num_pages').text,
+								'bookgenre': "",
+								'bookdesc': book.find('description').text
+							})
+							logger.debug(u"book found " + book.find('title').text + " " + pubyear)
+					resultsCount = resultsCount + 1
+				loopCount = loopCount + 1
+				URL = 'http://www.goodreads.com/author/list/' + authorid + '.xml?' + urllib.urlencode(self.params) + '&page=' + str(loopCount)
+				sourcexml = ElementTree.parse(urllib2.urlopen(URL, timeout=60))
+				rootxml = sourcexml.getroot()
+				resultxml = rootxml.getiterator('book')
 					
         logger.info("Removed %s non-english and no publication year results for author" % removedResults)
 					
@@ -151,33 +142,13 @@ class GoodReads:
 		logger.info('Searching for author at: %s' % set_url)
 
 		try:
-			sourcexml = ElementTree.parse(urllib2.urlopen(set_url, timeout=20))
+			sourcexml = ElementTree.parse(urllib2.urlopen(set_url, timeout=60))
 			rootxml = sourcexml.getroot()
 			resultxml = rootxml.getiterator('work')
 			author_dict = []
 			resultcount = 0
 			for author in resultxml:
 				bookdate = "0001-01-01"
-				#try:
-					#if (author.find('original_publication_day').text == None):
-						#pubday = "01"
-					#else:
-						#pubday = author.find('original_publication_day').text
-
-						#if (author.find('original_publication_month').text == None):
-							#pubmonth = "01"
-						#else:
-							#pubmonth = author.find('original_publication_month').text
-
-						#if (author.find('original_publication_year').text == None):
-							#pubyear = "0001"
-						#else:
-							#pubyear = author.find('original_publication_year').text
-
-						#bookdate = ''.join([pubyear, '-', pubmonth, '-', pubday])
-
-				#except KeyError:
-					#bookdate = "0001-01-01"
 						
 				if (author.find('original_publication_year').text == None):
 					bookdate = "0000"

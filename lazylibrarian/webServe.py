@@ -12,7 +12,6 @@ from lazylibrarian import logger, importer, database, postprocess
 from lazylibrarian.searchnzb import searchbook
 from lazylibrarian.formatter import checked
 from lazylibrarian.gr import GoodReads
-from lazylibrarian.gb import GoogleBooks
 
 
 def serve_template(templatename, **kwargs):

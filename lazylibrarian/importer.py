@@ -3,14 +3,12 @@ import time, os, threading
 import lazylibrarian
 from lazylibrarian import logger, formatter, database
 from lazylibrarian.gr import GoodReads
-from lazylibrarian.gb import GoogleBooks
 
 
 def addBookToDB(bookid, authorname):
     type = 'book'
     myDB = database.DBConnection()
     GR = GoodReads(authorname, type)
-    GB = GoogleBooks(bookid, type)
 
 # process book
     dbbook = myDB.action('SELECT * from books WHERE BookID=?', [bookid]).fetchone()
@@ -85,7 +83,6 @@ def addAuthorToDB(authorname=None):
     myDB = database.DBConnection()
 
     GR = GoodReads(authorname, type)
-    GB = GoogleBooks(authorname, type)
     
 
     query = "SELECT * from authors WHERE AuthorName='%s'" % authorname.replace("'","''")
@@ -124,8 +121,6 @@ def addAuthorToDB(authorname=None):
     bookscount = 0
     books = GR.get_author_books(authorid)
     for book in books:
-        # this is for rare cases where returns multiple authors who share id
-        if book['authorname'].upper() == authorname.upper():
         	controlValueDict = {"BookID": book['bookid']}
         	newValueDict = {
                 "AuthorName":   book['authorname'],
