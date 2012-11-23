@@ -80,7 +80,10 @@ class GoodReads:
 
             resultsCount = 0
             removedResults = 0
-            logger.info(u"url " + URL)
+            logger.debug(u"url " + URL)
+
+            authorNameResult = rootxml.find('./author/name').text
+            logger.debug(u"author name " + authorNameResult)
 
             loopCount = 1;
             while (len(resultxml)):
@@ -89,8 +92,6 @@ class GoodReads:
 						pubyear = "0000"
 					else:
 						pubyear = book.find('publication_year').text
-
-					authorNameResult = book.find('./authors/author/name').text
 	
 					try:
 						bookimg = book.find('image_url').text
@@ -101,8 +102,7 @@ class GoodReads:
 					except AttributeError:
 						bookimg = 'images/nocover.png'
 					if not (re.match('[^\w-]', book.find('title').text)): #remove books with bad caracters in title
-						if not pubyear == "0000":
-							books_dict.append({
+						books_dict.append({
 								'authorname': authorNameResult,
 								'bookid': book.find('id').text,
 								'bookname': book.find('title').text,
@@ -117,20 +117,21 @@ class GoodReads:
 								'bookpages': book.find('num_pages').text,
 								'bookgenre': "",
 								'bookdesc': book.find('description').text
-							})
-							logger.debug(u"book found " + book.find('title').text + " " + pubyear)
-					resultsCount = resultsCount + 1
+						})
+						logger.debug(u"book found " + book.find('title').text + " " + pubyear)
+						resultsCount = resultsCount + 1
+					logger.debug(u"book found " + book.find('title').text + " " + pubyear)
+					if  (re.match('[^\w-]', book.find('title').text)):
+						removedResults = removedResults + 1
+
 				loopCount = loopCount + 1
 				URL = 'http://www.goodreads.com/author/list/' + authorid + '.xml?' + urllib.urlencode(self.params) + '&page=' + str(loopCount)
 				sourcexml = ElementTree.parse(urllib2.urlopen(URL, timeout=60))
 				rootxml = sourcexml.getroot()
 				resultxml = rootxml.getiterator('book')
 					
-        logger.info("Removed %s non-english and no publication year results for author" % removedResults)
-					
-	                #logger.info("Found %s " % book.tag)
-	                #logger.info("Found %s " % book.find('title').text)
-        logger.info("Found %s books for author" % resultsCount)
+        logger.debug("Removed %s non-english and no publication year results for author" % removedResults)
+        logger.debug("Found %s books for author" % resultsCount)
         return books_dict
 		
     def find_results(self, authorname=None):

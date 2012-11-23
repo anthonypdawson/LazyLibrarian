@@ -1,4 +1,4 @@
-/*  HTML5 ✰ Boilerplate  */
+﻿/*  HTML5 ✰ Boilerplate  */
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -143,14 +143,14 @@ padding:8px;
 ul#nav li a {  padding: 0px; font-size: 16px; font-weight: bold; color: #9F9D9D; text-decoration: none; }
 ul#nav li a:hover { text-decoration: underline; }
 
-.authorsActive { float:left;width:78px; height:30px;background-image:url('../images/nav/authorsActive.png');}
-.authors { float:left;width:78px; height:30px;background-image:url('../images/nav/authors.png'); }
-.booksActive { float:left;width:70px; height:30px;background-image:url('../images/nav/booksActive.png');}
-.books { float:left;width:70px; height:30px;background-image:url('../images/nav/books.png'); }
-.logsActive { float:left;width:56px; height:30px;background-image:url('../images/nav/logsActive.png');}
-.logs { float:left;width:56px; height:30px;background-image:url('../images/nav/logs.png'); }
-.configActive { margin-left:10px;float:left;width:30px; height:30px;background-image:url('../images/nav/configActive.png');}
-.config { margin-left:10px;float:left;width:30px; height:30px;background-image:url('../images/nav/config.png'); }
+.authorsActive { float:left;width:78px; height:30px;background-image:url('../../images/nav/authorsActive.jpg');}
+.authors { float:left;width:78px; height:30px;background-image:url('../../images/nav/authors.jpg'); }
+.booksActive { float:left;width:70px; height:30px;background-image:url('../../images/nav/booksActive.jpg');}
+.books { float:left;width:70px; height:30px;background-image:url('../../images/nav/books.jpg'); }
+.logsActive { float:left;width:56px; height:30px;background-image:url('../../images/nav/logsActive.jpg');}
+.logs { float:left;width:56px; height:30px;background-image:url('../../images/nav/logs.jpg'); }
+.configActive { margin-left:10px;float:left;width:30px; height:30px;background-image:url('../../images/nav/configActive.jpg');}
+.config { margin-left:10px;float:left;width:30px; height:30px;background-image:url('../../images/nav/config.jpg'); }
 
 div#subhead_container { margin-top:8px;height: 28px; line-height:22px;width:100%; background-color:#f2f2f2; float: left; list-style-type: none; z-index: 997; overflow: hidden; color:black;}
 ul#subhead_menu li { width: 100%; height: 100%; vertical-align: middle; color: black; display: inline; }

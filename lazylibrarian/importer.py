@@ -146,14 +146,17 @@ def addAuthorToDB(authorname=None):
         	bookscount = bookscount+1 
 
     lastbook = myDB.action("SELECT BookName, BookLink, BookDate from books WHERE AuthorID='%s' order by BookDate DESC" % authorid).fetchone()
-    controlValueDict = {"AuthorID": authorid}
-    newValueDict = {
-        "Status": "Active",
-        "TotalBooks": bookscount,
-        "LastBook": lastbook['BookName'],
-        "LastLink": lastbook['BookLink'],
-        "LastDate": lastbook['BookDate']
-        }
+    bookCount = myDB.select("SELECT COUNT(BookName) as counter FROM books WHERE AuthorID='%s'" % authorid)
 
-    myDB.upsert("authors", newValueDict, controlValueDict)
-    logger.info("Processing complete: Added %s books to the database" % bookscount)
+    for count in bookCount:
+		controlValueDict = {"AuthorID": authorid}
+		newValueDict = {
+			"Status": "Active",
+			"TotalBooks": count['counter'],
+			"LastBook": lastbook['BookName'],
+			"LastLink": lastbook['BookLink'],
+			"LastDate": lastbook['BookDate']
+		}
+
+		myDB.upsert("authors", newValueDict, controlValueDict)
+		logger.info("Processing complete: Added %s books to the database" % str(count['counter']))
