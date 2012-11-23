@@ -76,7 +76,7 @@ NEWZBIN = False
 NEWZBIN_UID = None
 NEWZBIN_PASSWORD = None
 
-EBOOK_TYPE = None
+EBOOK_TYPE = 'epub'
 
 SEARCH_INTERVAL = 30
 SCAN_INTERVAL = 5
@@ -173,12 +173,12 @@ def initialize():
         CheckSection('SABnzbd')
 
         try:
-            HTTP_PORT = check_setting_int(CFG, 'General', 'http_port', 5299)
+            HTTP_PORT = check_setting_int(CFG, 'General', 'http_port', 8082)
         except:
-            HTTP_PORT = 5299
+            HTTP_PORT = 8082
 
         if HTTP_PORT < 21 or HTTP_PORT > 65535:
-            HTTP_PORT = 5299
+            HTTP_PORT = 8082
 
         HTTP_HOST = check_setting_str(CFG, 'General', 'http_host', '0.0.0.0')
         HTTP_USER = check_setting_str(CFG, 'General', 'http_user', '')
@@ -218,7 +218,7 @@ def initialize():
         NEWZBIN = bool(check_setting_int(CFG, 'Newzbin', 'newzbin', 0))
         NEWZBIN_UID = check_setting_str(CFG, 'Newzbin', 'newzbin_uid', '')
         NEWZBIN_PASS = check_setting_str(CFG, 'Newzbin', 'newzbin_pass', '')
-        EBOOK_TYPE = check_setting_str(CFG, 'General', 'ebook_type', '')
+        EBOOK_TYPE = check_setting_str(CFG, 'General', 'ebook_type', 'epub')
 
         if not LOGDIR:
             LOGDIR = os.path.join(DATADIR, 'Logs')
