@@ -38,3 +38,9 @@ nosetests.xml
 *.db
 
 *.py
+
+*.ini
+
+*.log
+
+*.log

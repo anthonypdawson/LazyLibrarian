@@ -35,7 +35,8 @@ def searchbook(books=None):
 
         author = formatter.latinToAscii(formatter.replace_all(author, dic))
         book = formatter.latinToAscii(formatter.replace_all(book, dic))
-
+		
+		#OLD SEARCH TERM
         searchterm = author + ' ' + book + ' ' + lazylibrarian.EBOOK_TYPE
         searchterm = re.sub('[\.\-\/]', ' ', searchterm).encode('utf-8')
         searchterm = re.sub(r"\s\s+" , " ", searchterm) # strip any double white space
@@ -73,8 +74,8 @@ def searchbook(books=None):
         else:
             dictrepl = {'...':'', ' & ':' ', ' = ': ' ', '?':'', '$':'s', ' + ':' ', '"':'', ',':'', '*':'', '(':'', ')':'', '[':'', ']':'', '#':'', '0':'', '1':'', '2':'', '3':'', '4':'', '5':'', '6':'', '7':'', '8':'' , '9':'', '\'':'', ':':'', '\s\s':' ' }
             bookName = book['bookName']
-            bookName = re.sub('[\.\-\/]', ' ', bookName).encode('utf-8')
-            bookName = re.sub(r'\(.*?\)', '', bookName).encode('utf-8')
+            bookName = re.sub('[\.\-\/]', ' ', bookName)
+            bookName = re.sub(r'\(.*?\)', '', bookName)
             bookName = formatter.latinToAscii(formatter.replace_all(bookName, dictrepl)).strip()
             logger.debug(u'bookName %s' % bookName)
             addedCounter = 0
