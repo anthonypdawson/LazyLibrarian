@@ -143,9 +143,10 @@ def update():
     
 
     elif lazylibrarian.INSTALL_TYPE == 'git':
-        
+	
+        output, err = runGit('stash clear')
         output, err = runGit('pull origin ' + version.LAZYLIBRARIAN_VERSION)
-        
+        	
         if not output:
             logger.error('Couldn\'t download latest version')
             

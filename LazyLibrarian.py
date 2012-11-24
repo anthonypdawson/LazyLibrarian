@@ -5,7 +5,7 @@ import lazylibrarian
 from lazylibrarian import webStart, logger
 
 def main():
-
+	#DIFFEREMT
     # rename this thread
     threading.currentThread().name = "MAIN"
     # Set paths
@@ -32,7 +32,7 @@ def main():
 	#check the version when the application starts
     from lazylibrarian import versioncheck
     lazylibrarian.CURRENT_VERSION = versioncheck.getVersion()
-    versioncheck.checkGithub()
+    LATEST_VERSION = versioncheck.checkGithub()
 
     # Set arguments
     from optparse import OptionParser
