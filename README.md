@@ -17,7 +17,7 @@ Right now its capable of the following:
 * The new theme for the site allows it to be accessed (and usable) from devices with a smaller screen (such as an iPad)
 
 ##Screenshots
-<img src="http://i.imgur.com/4sQDZ.png" width="600">
+<img src="http://i.imgur.com/O8awy.png" width="600">
 <img src="http://i.imgur.com/fr0yE.png" width="600">
 <img src="http://i.imgur.com/AOgh1.png" width="600">
 
