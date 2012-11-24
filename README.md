@@ -9,8 +9,8 @@ LazyLibrarian is a program to follow authors and grab metadata for all your digi
 It uses Goodreads.com (for author info and book info) websites as a source. License: GNU GPL v3 
 
 Right now its capable of the following:  
-* find authors and add them to the database  
-* list all books of an author and add them as 'wanted'.  
+* Find authors and add them to the database  
+* List all books of an author and add them as 'wanted'.  
 * LazyLibrarian will search a nzb-file for that book (only Newznab and nzbmatrix are currently supported)  
 * If a nzb is found it will be send to sabnzbd or saved in a blackhole where your downloadapp can pick it up.  
 * When processing the downloaded books it will save a coverpicture (if available) and save all metadata into metadata.opf next to the bookfile (calibre compatible format)
