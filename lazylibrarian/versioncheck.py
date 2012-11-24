@@ -1,5 +1,5 @@
 
-import platform, subprocess, re, os, urllib2, tarfile
+import platform, subprocess, re, os, urllib2, tarfile, threading
 
 import lazylibrarian
 from lazylibrarian import logger, version
@@ -86,7 +86,13 @@ def getVersion():
             return current_version
         else:
             return None
-    
+
+def checkForUpdates():
+	# rename this thread
+	threading.currentThread().name = "VERSIONCHECK"
+	s = getVersion()
+	l = checkGithub()
+	
 def checkGithub():
 
     # Get the latest commit available from github

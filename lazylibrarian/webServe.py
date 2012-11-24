@@ -291,6 +291,14 @@ class WebInterface(object):
         raise cherrypy.HTTPRedirect("books")
     manProcess.exposed = True
 
+    def checkForUpdates(self):
+        #check the version when the application starts
+        from lazylibrarian import versioncheck
+        lazylibrarian.CURRENT_VERSION = versioncheck.getVersion()
+        versioncheck.checkGithub()
+        raise cherrypy.HTTPRedirect("config")
+    checkForUpdates.exposed = True
+
     def logs(self):
         return serve_template(templatename="logs.html", title="Log", lineList=lazylibrarian.LOGLIST)
     logs.exposed = True

@@ -78,7 +78,8 @@ NEWZBIN_PASSWORD = None
 
 EBOOK_TYPE = 'epub'
 
-SEARCH_INTERVAL = 30
+VERSIONCHECK_INTERVAL = 120
+SEARCH_INTERVAL = 60
 SCAN_INTERVAL = 5
 
 def CheckSection(sec):
@@ -386,7 +387,8 @@ def start():
         # Crons and scheduled jobs go here
         starttime = datetime.datetime.now()
         SCHED.add_interval_job(postprocess.processDir, minutes=SCAN_INTERVAL, start_date=starttime+datetime.timedelta(minutes=1))
-        SCHED.add_interval_job(searchnzb.searchbook, minutes=SEARCH_INTERVAL, start_date=starttime+datetime.timedelta(hours=1))
+        SCHED.add_interval_job(searchnzb.searchbook, minutes=SEARCH_INTERVAL, start_date=starttime+datetime.timedelta(minutes=1))
+        SCHED.add_interval_job(versioncheck.checkForUpdates, minutes=VERSIONCHECK_INTERVAL, start_date=starttime+datetime.timedelta(minutes=1))
 
         SCHED.start()
 #        for job in SCHED.get_jobs():

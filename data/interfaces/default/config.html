@@ -8,6 +8,7 @@
         <ul id="subhead_menu">
             <li><a href="shutdown" id="button">Shutdown</a></li>
             <li><a href="restart" id="button">Restart</a></li>
+            <li ><a id="button" href="checkForUpdates">Check for Updates</a></li>
         </ul>
     </div>
 </%def>
@@ -163,6 +164,7 @@
     <div class="table_wrapper_button">
         <p><input type="submit" value="Save changes" id="add" style="float:right;"></p>
     </div>
+	<p style="text-align:center;position:fixed;bottom:10px;margin-left:20px;color:grey">Current Version: ${lazylibrarian.LATEST_VERSION}</p>
     </div>
 </form>
 </%def>
