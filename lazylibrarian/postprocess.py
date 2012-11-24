@@ -87,18 +87,18 @@ def processDir():
 def processDestination(pp_path=None, dest_path=None, authorname=None, bookname=None):
 
     if not os.path.exists(dest_path):
-        logger.info('%s does not exist, so it\'s safe to create it' % dest_path)
+        logger.debug('%s does not exist, so it\'s safe to create it' % dest_path)
         try:
             if lazylibrarian.DESTINATION_COPY:
                 shutil.copytree(pp_path, dest_path)
-                logger.info('Successfully copied %s to %s.' % (pp_path, dest_path))
+                logger.debug('Successfully copied %s to %s.' % (pp_path, dest_path))
             else:
                 shutil.move(pp_path, dest_path)
-                logger.info('Successfully moved %s to %s.' % (pp_path, dest_path))
+                logger.debug('Successfully moved %s to %s.' % (pp_path, dest_path))
             pp = True
             #try and rename the actual book file
             for file2 in os.listdir(dest_path):
-            	logger.info('file ' + str(file2))
+            	#logger.debug('file ' + str(file2))
             	if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
             		os.rename(os.path.join(dest_path, file2), os.path.join(dest_path, bookname + '.' + lazylibrarian.EBOOK_TYPE))
         except OSError:
@@ -112,7 +112,7 @@ def processIMG(dest_path=None, bookimg=None):
     #handle pictures
     try:
         if not bookimg == 'images/nocover.png':
-            logger.info('Downloading cover from ' + bookimg)
+            logger.debug('Downloading cover from ' + bookimg)
             coverpath = os.path.join(dest_path, 'cover.jpg')
             img = open(coverpath,'wb')
             imggoogle = imgGoogle()
@@ -159,9 +159,9 @@ def processOPF(dest_path=None, authorname=None, bookname=None, bookisbn=None, bo
         opf = open(opfpath, 'wb')
         opf.write(opfinfo)
         opf.close()
-        logger.info('Saved metadata to: ' + opfpath)
+        logger.debug('Saved metadata to: ' + opfpath)
     else:
-        logger.info('%s allready exists. Did not create one.' % opfpath)
+        logger.debug('%s allready exists. Did not create one.' % opfpath)
 
 class imgGoogle(FancyURLopener):
     # Hack because Google wants a user agent for downloading images, which is stupid because it's so easy to circumvent.

@@ -43,7 +43,7 @@ def SABnzbd(title=None, nzburl=None):
     try:
         request = urllib.urlopen(URL)
         logger.debug(u'Sending Nzbfile to SAB <a href="%s">URL</a>' % URL)
-        logger.info(u'Sending Nzbfile to SAB')
+        logger.debug(u'Sending Nzbfile to SAB')
     except (EOFError, IOError), e:
         logger.error(u"Unable to connect to SAB with URL: %s" % URL)
         return False
@@ -59,7 +59,7 @@ def SABnzbd(title=None, nzburl=None):
 
     logger.debug("Result text from SAB: " + result)
     if result == "ok":
-        logger.info("NZB sent to SAB successfully.")
+        logger.info(title + " sent to SAB successfully.")
         return True
     elif result == "Missing authentication":
         logger.error("Incorrect username/password.")

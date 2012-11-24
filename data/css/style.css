@@ -1,4 +1,4 @@
-﻿/*  HTML5 ✰ Boilerplate  */
+/*  HTML5 ✰ Boilerplate  */
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -227,7 +227,7 @@ table#book_table th#bookname { text-align: left; min-width: 250px; }
 table#book_table th#status { text-align: center; min-width: 50px; }
 table#book_table th#date { text-align: left; width: 50px; }
 table#book_table th#number { text-align: center; width: 50px; }
-table#book_table th#language { text-align: center; min-width: 25px; }
+table#book_table th#language { text-align: center; min-width: 25px; display:none;}
 table#book_table th#stars { text-align: center; width: 50px; }
 
 table#book_table td#select { vertical-align: middle; text-align: left; }
@@ -239,7 +239,7 @@ table#book_table td#bookname { vertical-align: middle; text-align: left; }
 table#book_table td#status { vertical-align: middle; text-align: center; }
 table#book_table td#date { vertical-align: middle; text-align: center; }
 table#book_table td#number { vertical-align: middle; text-align: right; }
-table#book_table td#language { vertical-align: middle; text-align: center; }
+table#book_table td#language { vertical-align: middle; text-align: center;  display:none;}
 table#book_table td#stars { vertical-align: middle; text-align: center; }
 
 img.bookArt { float: left; padding-right: 5px; }
@@ -254,9 +254,72 @@ table#log_table td#timestamp { text-align: left; min-width: 150px; }
 table#log_table td#level { text-align: left; min-width: 60px;  }
 table#log_table td#message { text-align: left; min-width: 500px; }
 
-div.progress-container { border: 1px solid #ccc; width: 100px; height: 14px; margin: 2px 5px 2px 0; padding: 1px; float: left; background: white; }
-div.progress-container > div { background-color: #afa0a0; height: 14px; }
+div.progress-container { position:relative; width: 100%; height: 14px; margin: 2px 5px 2px 0;  float: left; 
+background-color: #F7F7F7;
+background-image: -moz-linear-gradient(top, whiteSmoke, #F9F9F9);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(whiteSmoke), to(#F9F9F9));
+background-image: -webkit-linear-gradient(top, whiteSmoke, #F9F9F9);
+background-image: -o-linear-gradient(top, whiteSmoke, #F9F9F9);
+background-image: linear-gradient(to bottom, whiteSmoke, #F9F9F9);
+background-repeat: repeat-x;
+  -webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+text-align:center;}
+div.progress-container > div { background-color: #0ebeed; height: 14px;   -webkit-border-radius: 4px;
+-moz-border-radius: 4px; text-align:center; z-index:900;}
+
+.danger > div {
+	background-color: #DD514C;
+	background-image: -moz-linear-gradient(top, #EE5F5B, #C43C35);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EE5F5B), to(#C43C35));
+	background-image: -webkit-linear-gradient(top, #EE5F5B, #C43C35);
+	background-image: -o-linear-gradient(top, #EE5F5B, #C43C35);
+	background-image: linear-gradient(to bottom, #EE5F5B, #C43C35);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffc43c35', GradientType=0);
+}
+
+.warning > div {
+	background-color: #FAA732;
+	background-image: -moz-linear-gradient(top, #FBB450, #F89406);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FBB450), to(#F89406));
+	background-image: -webkit-linear-gradient(top, #FBB450, #F89406);
+	background-image: -o-linear-gradient(top, #FBB450, #F89406);
+	background-image: linear-gradient(to bottom, #FBB450, #F89406);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+}
+
+.success > div {
+	background-color: #5EB95E;
+	background-image: -moz-linear-gradient(top, #62C462, #57A957);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62C462), to(#57A957));
+	background-image: -webkit-linear-gradient(top, #62C462, #57A957);
+	background-image: -o-linear-gradient(top, #62C462, #57A957);
+	background-image: linear-gradient(to bottom, #62C462, #57A957);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff57a957', GradientType=0);
+}
+
+.info > div {
+	background-color: #4BB1CF;
+	background-image: -moz-linear-gradient(top, #5BC0DE, #339BB9);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5BC0DE), to(#339BB9));
+	background-image: -webkit-linear-gradient(top, #5BC0DE, #339BB9);
+	background-image: -o-linear-gradient(top, #5BC0DE, #339BB9);
+	background-image: linear-gradient(to bottom, #5BC0DE, #339BB9);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff339bb9', GradientType=0);
+}
 .havebooks { font-size: 13px; margin-left: 36px; padding-bottom: 3px; vertical-align: middle; }
+.progressbar-back-text  { font-size: 13px; padding-bottom: 3px; vertical-align: middle; background-color: transparent; position: absolute; text-align:center; width:100%;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); z-index:800; }
+.progressbar-front-text  { font-size: 13px; padding-bottom: 3px; vertical-align: middle; background-color: transparent; display:block;
+width:100%; position:absolute; color:black; overflow:hidden; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;}
 
 footer { margin: 20px auto 20px auto; }
 div#version { text-align: center; font-weight: bold; }

@@ -113,7 +113,7 @@ def searchbook(books=None):
 						snatch = DownloadMethod(bookid, nzbprov, nzbTitle, nzburl)
 					time.sleep(1)
             if addedCounter == 0:
-            	logger.info("No nzb's matched the title of the book. Adding book to queue.")
+            	logger.info("No nzb's found for " + (book["authorName"] + ' ' + bookName).strip() + ". Adding book to queue.")
         counter = counter + 1
 
 

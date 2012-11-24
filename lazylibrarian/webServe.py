@@ -264,6 +264,14 @@ class WebInterface(object):
                 myDB.upsert("books", newValueDict, controlValueDict)
                 logger.debug('Status set to %s for BookID: %s' % (action, bookid))
 
+                #update authors needs to be updated every time a book is marked differently
+                query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND Status="Have"' % AuthorName
+                countbooks = myDB.action(query).fetchone()
+                havebooks = int(countbooks[0])
+                controlValueDict = {"AuthorName": AuthorName}
+                newValueDict = {"HaveBooks": havebooks}
+                myDB.upsert("authors", newValueDict, controlValueDict)
+
         # start searchthreads
         books = []
         for bookid in args:
@@ -273,6 +281,7 @@ class WebInterface(object):
                     books.append({"bookid": bookid})
 
         threading.Thread(target=searchbook, args=[books]).start()
+
         if AuthorName:
             raise cherrypy.HTTPRedirect("authorPage?AuthorName=%s" % AuthorName)
     markBooks.exposed = True

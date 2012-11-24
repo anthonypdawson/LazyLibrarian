@@ -60,9 +60,9 @@ def NewzNab(book=None):
             except IndexError:
                 logger.debug('No results')
         if nzbcount:
-            logger.info('Found %s nzb for: %s' % (nzbcount, book['searchterm']))
+            logger.debug('Found %s nzb for: %s' % (nzbcount, book['searchterm']))
         else:
-            logger.info(u'Newznab returned 0 results for: ' + book['searchterm'] + '. Adding book to queue.')
+            logger.debug(u'Newznab returned 0 results for: ' + book['searchterm'] + '. Adding book to queue.')
     return results
 
 def NZBMatrix(book=None):
@@ -116,7 +116,7 @@ def NZBMatrix(book=None):
                 logger.debug('No results')
 
         if nzbcount:
-            logger.info('Found %s nzb for: %s' % (nzbcount, book['searchterm']))
+            logger.debug('Found %s nzb for: %s' % (nzbcount, book['searchterm']))
         else:
-            logger.info('NZBMatrix returned 0 results for: ' + book['searchterm'] + '. Adding book to queue.')
+            logger.debug('NZBMatrix returned 0 results for: ' + book['searchterm'] + '. Adding book to queue.')
     return results
