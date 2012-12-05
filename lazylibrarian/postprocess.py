@@ -100,6 +100,7 @@ def processDestination(pp_path=None, dest_path=None, authorname=None, bookname=N
             for file2 in os.listdir(dest_path):
             	#logger.debug('file ' + str(file2))
             	if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
+            		logger.info('fileextension ' + str(os.path.splitext(pp_path)[1]))
             		os.rename(os.path.join(dest_path, file2), os.path.join(dest_path, bookname + '.' + lazylibrarian.EBOOK_TYPE))
         except OSError:
             logger.error('Could not create destinationfolder or rename the downloaded ebook. Check permissions of: ' + lazylibrarian.DESTINATION_DIR)

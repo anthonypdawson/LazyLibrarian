@@ -136,7 +136,7 @@ def DownloadMethod(bookid=None, nzbprov=None, nzbtitle=None, nzburl=None):
         except urllib2.URLError, e:
             logger.warn('Error fetching nzb from url: ' + nzburl + ' %s' % e)
 
-        nzbname = str.replace(nzbtitle, ' ', '_') + '.nzb'
+        nzbname = str.replace(str(nzbtitle), ' ', '_') + '.nzb'
         nzbpath = os.path.join(lazylibrarian.BLACKHOLEDIR, nzbname)
 
         try:
