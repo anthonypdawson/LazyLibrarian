@@ -233,31 +233,27 @@ class WebInterface(object):
 
 #BOOKS
     def openBook(self, bookLink=None, action=None, **args):
-		logger.info('1 ' + bookLink)
 		myDB = database.DBConnection()
 		
 		# find book
-		logger.info('2')
 		bookdata = myDB.select('SELECT * from books WHERE BookLink=\'' + bookLink + '\'')
-		logger.info('2' + ('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
+		logger.info(('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
 		if bookdata:
-			logger.info('3');
 			authorName = bookdata[0]["AuthorName"];
-			logger.info('4');
 			bookName = bookdata[0]["BookName"];
-			logger.info('5');
 
 			dic = {'<':'', '>':'', '=':'', '?':'', '"':'', ',':'', '*':'', ':':'', ';':'', '\'':''}
 			bookName = formatter.latinToAscii(formatter.replace_all(bookName, dic))
-			dest_dir = lazylibrarian.DESTINATION_DIR + '\\' + authorName + '\\' + bookName	
+			if (lazylibrarian.INSTALL_TYPE == 'win'):
+				dest_dir = lazylibrarian.DESTINATION_DIR + '\\' + authorName + '\\' + bookName
+			else:
+				dest_dir = lazylibrarian.DESTINATION_DIR + '//' + authorName + '//' + bookName
 
-			logger.info('6 ' + dest_dir)
+			logger.info('bookdir ' + dest_dir);
 			if os.path.isdir(dest_dir):
-				logger.info('7')
 				for file2 in os.listdir(dest_dir):
-					logger.info('8')
-					logger.info('file ' + str(file2))
-					if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
+					logger.info('Openning file ' + str(file2))
+					if ((file2.lower().find(".jpg") <= 0) & (file2.lower().find(".opf") <= 0)):
 						return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
     openBook.exposed = True
 
