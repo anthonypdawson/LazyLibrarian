@@ -83,7 +83,7 @@
 <!--                <br>-->
                 <h5>Import languages:</h5><input type="text" name="imp_preflang" value="${config['imp_preflang']}" size="20" maxlength="40">
                 <br>
-                <i class="smalltext">Comma separated country shortcodes, e.g.:<br> en, ch, fr, ge, ja, nl, ru</i>
+                <i class="smalltext">Comma separated country shortcodes, e.g.:<br> eng, spa, por</i>
             </td>
 			<td>
 <!--                <h5><input type="checkbox" name="imp_onlyisbn" value=1 ${config['use_imp_onlyisbn']} /> Hide books without ISBN</h5>-->
@@ -124,6 +124,16 @@
                     <h5><input type="checkbox" name="blackhole" value=1 ${config['use_blackhole']} /> Use blackhole</h5>
                     <input type="text" name="blackholedir" value="${config['blackholedir']}" size="50">
                     <i class="smalltext">The folder your nzb-downloader monitors for nzb-files.</i>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Goodreads:</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>API:</h5><input type="text" name="gr_api" value="${config['gr_api']}" size="50" maxlength="40" >
                 </td>
             </tr>
         </table>

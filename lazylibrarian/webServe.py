@@ -92,13 +92,14 @@ class WebInterface(object):
                     "newzbin_uid" :     lazylibrarian.NEWZBIN_UID,
                     "newzbin_pass" :    lazylibrarian.NEWZBIN_PASS,
                     "ebook_type" :		lazylibrarian.EBOOK_TYPE,
+                    "gr_api" :		lazylibrarian.GR_API,
                 }
         return serve_template(templatename="config.html", title="Settings", config=config)    
     config.exposed = True
 
     def configUpdate(self, http_host='0.0.0.0', http_user=None, http_port=5299, http_pass=None, http_look=None, launch_browser=0, logdir=None, imp_onlyisbn=0, imp_preflang=None,
         sab_host=None, sab_port=None, sab_api=None, sab_user=None, sab_pass=None, destination_copy=0, destination_dir=None, download_dir=None, sab_cat=None, usenet_retention=None, blackhole=0, blackholedir=None,
-        nzbmatrix=0, nzbmatrix_user=None, nzbmatrix_api=None, newznab=0, newznab_host=None, newznab_api=None, newzbin=0, newzbin_uid=None, newzbin_pass=None, ebook_type=None):
+        nzbmatrix=0, nzbmatrix_user=None, nzbmatrix_api=None, newznab=0, newznab_host=None, newznab_api=None, newzbin=0, newzbin_uid=None, newzbin_pass=None, ebook_type=None, gr_api=None):
 
         lazylibrarian.HTTP_HOST = http_host
         lazylibrarian.HTTP_PORT = http_port
@@ -137,6 +138,7 @@ class WebInterface(object):
         lazylibrarian.NEWZBIN_UID = newzbin_uid
         lazylibrarian.NEWZBIN_PASS = newzbin_pass
         lazylibrarian.EBOOK_TYPE = ebook_type
+        lazylibrarian.GR_API = gr_api
 
         lazylibrarian.config_write()
 
@@ -166,11 +168,10 @@ class WebInterface(object):
         myDB = database.DBConnection()
 
         languages = myDB.select('SELECT DISTINCT BookLang from books WHERE AuthorName LIKE ?', [AuthorName.replace("'","''")])
-
         if BookLang:
-            querybooks = "SELECT * from books WHERE BookLang='%s' AND AuthorName LIKE '%s' order by BookDate DESC, BookRate DESC" % (BookLang, AuthorName.replace("'","''"))
+            querybooks = "SELECT * from books WHERE AuthorName LIKE '%s' AND BookLang = '%s' order by BookDate DESC, BookRate DESC" % (AuthorName.replace("'","''"), BookLang)
         else:
-            querybooks = "SELECT * from books WHERE AuthorName LIKE '%s' order by BookDate DESC, BookRate DESC" % AuthorName.replace("'","''")
+            querybooks = "SELECT * from books WHERE AuthorName LIKE '%s' AND BookLang = '%s' order by BookDate DESC, BookRate DESC" % (AuthorName.replace("'","''"), lazylibrarian.IMP_PREFLANG)
 
         queryauthors = "SELECT * from authors WHERE AuthorName LIKE '%s'" % AuthorName.replace("'","''")
 

@@ -1,4 +1,4 @@
-/*  HTML5 ✰ Boilerplate  */
+﻿/*  HTML5 ✰ Boilerplate  */
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -518,7 +518,6 @@ div#shutdown{ text-align: center; vertical-align: middle; }
   background-image: -webkit-linear-gradient(#fcf5c2, #fff6a9) !important;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr=#fafafa, endColorstr=#eaeaea) !important;
   -ms-filter: progid:dximagetransform.microsoft.gradient(startColorstr=#fafafa, endColorstr=#eaeaea) !important;
-	position:absolute;
 	bottom:0px;
 	right:0px;
 	margin-bottom:20px;

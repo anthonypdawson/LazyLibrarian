@@ -59,7 +59,7 @@ BLACKHOLE = False
 BLACKHOLEDIR = None
 USENET_RETENTION = None
 
-IMP_PREFLANG = 'en'
+IMP_PREFLANG = 'eng'
 IMP_ONLYISBN = False
 
 GR_API = 'ckvsiSDsuqh7omh74ZZ6Q'
@@ -224,6 +224,8 @@ def initialize():
         NEWZBIN_PASS = check_setting_str(CFG, 'Newzbin', 'newzbin_pass', '')
         EBOOK_TYPE = check_setting_str(CFG, 'General', 'ebook_type', 'epub')
 
+        GR_API = check_setting_str(CFG, 'General', 'gr_api', 'ckvsiSDsuqh7omh74ZZ6Q')
+
         if not LOGDIR:
             LOGDIR = os.path.join(DATADIR, 'Logs')
 
@@ -334,6 +336,7 @@ def config_write():
     new_config['General']['blackhole'] = int(BLACKHOLE)
     new_config['General']['blackholedir'] = BLACKHOLEDIR
     new_config['General']['usenet_retention'] = USENET_RETENTION
+    new_config['General']['gr_api'] = GR_API
 
     new_config['NZBMatrix'] = {}
     new_config['NZBMatrix']['nzbmatrix'] = int(NZBMATRIX)

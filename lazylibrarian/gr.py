@@ -5,6 +5,8 @@ from xml.etree.ElementTree import Element, SubElement
 import lazylibrarian
 from lazylibrarian import logger, formatter, database
 
+import time
+
 class GoodReads:
     # http://www.goodreads.com/api/
 
@@ -101,6 +103,26 @@ class GoodReads:
 						bookimg = 'images/nocover.png'
 					except AttributeError:
 						bookimg = 'images/nocover.png'
+
+					bookLanguage = 'Unknown'
+
+					try:
+						time.sleep(1) #sleep 1 seccond to respect goodreads api terms
+
+						if (book.find('isbn13').text is not None):
+							BOOK_URL = 'http://www.goodreads.com/book/isbn?isbn=' + book.find('isbn13').text + '&' + urllib.urlencode(self.params) 
+							logger.debug(u"Book URL: " + str(BOOK_URL))
+							uOpen = urllib2.urlopen(BOOK_URL, timeout=60)
+							BOOK_sourcexml = ElementTree.parse(uOpen)
+							BOOK_rootxml = BOOK_sourcexml.getroot()
+							bookLanguage = BOOK_rootxml.find('./book/language_code').text
+							logger.debug(u"language: " + str(BOOK_rootxml.find('./book/language_code').text))
+					except Exception, e:
+						logger.debug(u"An error has occured: " + str(e))
+
+					if (bookLanguage is None):
+						bookLanguage = "Unknown"
+					
 					if not (re.match('[^\w-]', book.find('title').text)): #remove books with bad caracters in title
 						books_dict.append({
 								'authorname': authorNameResult,
@@ -110,7 +132,7 @@ class GoodReads:
 								'bookisbn': book.find('isbn').text,
 								'bookpub': book.find('publisher').text,
 								'bookdate': pubyear,
-								'booklang': "en", #No language attribute provided by goodreads, put default as english
+								'booklang': bookLanguage,
 								'booklink': book.find('link').text,
 								'bookrate': float(book.find('average_rating').text),
 								'bookimg': bookimg,

@@ -147,7 +147,6 @@ def addAuthorToDB(authorname=None):
 
     lastbook = myDB.action("SELECT BookName, BookLink, BookDate from books WHERE AuthorID='%s' order by BookDate DESC" % authorid).fetchone()
     bookCount = myDB.select("SELECT COUNT(BookName) as counter FROM books WHERE AuthorID='%s'" % authorid)
-
     for count in bookCount:
 		controlValueDict = {"AuthorID": authorid}
 		newValueDict = {
