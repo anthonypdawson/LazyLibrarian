@@ -7,14 +7,13 @@
 <%def name="headerIncludes()">
     <div id="subhead_container">
         <ul id="subhead_menu">
+            <li ><a id="button" href="manProcess">Manual Processing</a></li>
             %if len(languages) > 1:
                 <li>Language:&nbsp</li>
                 %for language in languages:
-                    <li>|</li>
                     <li  id="button"><a href="books?BookLang=${language['BookLang']}">${language['BookLang']}</a></li>
                 %endfor
             %endif
-            <li ><a id="button" href="manProcess">Manual Processing</a></li>
         </ul>
     </div>
 </%def>
@@ -64,7 +63,11 @@
                     <td id="stars"><img src="images/${starimg}" width="50" height="10"></td>
                     <td id="date">${result['BookDate']}</td>
                     <td id="language" hidden="true">${result['booklang']}</td>
-                    <td id="status">${result['Status']}</td>
+                    %if result['Status'] == 'Open':
+                        <td id="status"><a href="openBook?bookLink=${result['booklink']}" target="_new">${result['Status']}</a></td>
+                    %else:
+                        <td id="status">${result['Status']}</td>
+                    %endif
                 </tr>
         %endfor
         </tbody>

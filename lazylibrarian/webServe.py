@@ -8,7 +8,7 @@ import threading, time
 
 import lazylibrarian
 
-from lazylibrarian import logger, importer, database, postprocess
+from lazylibrarian import logger, importer, database, postprocess, formatter
 from lazylibrarian.searchnzb import searchbook
 from lazylibrarian.formatter import checked
 from lazylibrarian.gr import GoodReads
@@ -232,26 +232,33 @@ class WebInterface(object):
     addResults.exposed = True
 
 #BOOKS
-    def openBook(self, AuthorName=None, action=None, **args):
-        myDB = database.DBConnection()
-        for bookid in args:
-            # ouch dirty workaround...
-            if not bookid == 'book_table_length':
+    def openBook(self, bookLink=None, action=None, **args):
+		logger.info('1 ' + bookLink)
+		myDB = database.DBConnection()
+		
+		# find book
+		logger.info('2')
+		bookdata = myDB.select('SELECT * from books WHERE BookLink=\'' + bookLink + '\'')
+		logger.info('2' + ('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
+		if bookdata:
+			logger.info('3');
+			authorName = bookdata[0]["AuthorName"];
+			logger.info('4');
+			bookName = bookdata[0]["BookName"];
+			logger.info('5');
 
-                controlValueDict = {'BookID': bookid}
-                newValueDict = {'Status': action}
-                myDB.upsert("books", newValueDict, controlValueDict)
-                logger.debug('Status set to %s for BookID: %s' % (action, bookid))
+			dic = {'<':'', '>':'', '=':'', '?':'', '"':'', ',':'', '*':'', ':':'', ';':'', '\'':''}
+			bookName = formatter.latinToAscii(formatter.replace_all(bookName, dic))
+			dest_dir = lazylibrarian.DESTINATION_DIR + '\\' + authorName + '\\' + bookName	
 
-        # find book
-        myDB = database.DBConnection()
-        #data = myDB.select('SELECT * from wanted WHERE BookID=\'' + bookid + '\'')
-        bookdata = myDB.select('SELECT * from books WHERE BookID=\'' + bookid + '\'')
-        dest_dir = lazylibrarian.DESTINATION_DIR + '\\' + bookdata[0]["AuthorName"] + '\\' + bookdata[0]["BookName"]
-        for file2 in os.listdir(dest_dir):
-			logger.info('file ' + str(file2))
-			if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
-				return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
+			logger.info('6 ' + dest_dir)
+			if os.path.isdir(dest_dir):
+				logger.info('7')
+				for file2 in os.listdir(dest_dir):
+					logger.info('8')
+					logger.info('file ' + str(file2))
+					if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
+						return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
     openBook.exposed = True
 
     def markBooks(self, AuthorName=None, action=None, **args):
@@ -266,7 +273,7 @@ class WebInterface(object):
                 logger.debug('Status set to %s for BookID: %s' % (action, bookid))
 
                 #update authors needs to be updated every time a book is marked differently
-                query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND Status="Have"' % AuthorName
+                query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND Status="Have" OR Status="Open"' % AuthorName
                 countbooks = myDB.action(query).fetchone()
                 havebooks = int(countbooks[0])
                 controlValueDict = {"AuthorName": AuthorName}

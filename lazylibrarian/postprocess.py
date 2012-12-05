@@ -67,11 +67,11 @@ def processDir():
 
                     #update books
                     controlValueDict = {"BookID": book['BookID']}
-                    newValueDict = {"Status": "Have"}
+                    newValueDict = {"Status": "Open"}
                     myDB.upsert("books", newValueDict, controlValueDict)
 
                     #update authors
-                    query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND Status="Have"' % authorname
+                    query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND Status="Have" OR Status="Open"' % authorname
                     countbooks = myDB.action(query).fetchone()
                     havebooks = int(countbooks[0])
                     controlValueDict = {"AuthorName": authorname}
@@ -91,17 +91,17 @@ def processDestination(pp_path=None, dest_path=None, authorname=None, bookname=N
         try:
             if lazylibrarian.DESTINATION_COPY:
                 shutil.copytree(pp_path, dest_path)
-                logger.debug('Successfully copied %s to %s.' % (pp_path, dest_path))
+                logger.info('Successfully copied %s to %s.' % (pp_path, dest_path))
             else:
                 shutil.move(pp_path, dest_path)
-                logger.debug('Successfully moved %s to %s.' % (pp_path, dest_path))
+                logger.info('Successfully moved %s to %s.' % (pp_path, dest_path))
             pp = True
             #try and rename the actual book file
             for file2 in os.listdir(dest_path):
-            	#logger.debug('file ' + str(file2))
-            	if file2.lower().find("." + lazylibrarian.EBOOK_TYPE) > 0:
-            		logger.info('fileextension ' + str(os.path.splitext(pp_path)[1]))
-            		os.rename(os.path.join(dest_path, file2), os.path.join(dest_path, bookname + '.' + lazylibrarian.EBOOK_TYPE))
+            	logger.info('file extension ' + str(file2).split('.')[-1])
+            	if ((file2.lower().find(".jpg") <= 0) & (file2.lower().find(".opf") <= 0)):
+            		logger.info('file ' + str(file2))
+            		os.rename(os.path.join(dest_path, file2), os.path.join(dest_path, bookname + '.' + str(file2).split('.')[-1]))
         except OSError:
             logger.error('Could not create destinationfolder or rename the downloaded ebook. Check permissions of: ' + lazylibrarian.DESTINATION_DIR)
             pp = False

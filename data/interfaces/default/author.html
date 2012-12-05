@@ -105,7 +105,12 @@
                     <td id="stars"><img src="images/${starimg}" width="50" height="10"></td>
                     <td id="date">${result['BookDate']}</td>
                     <td id="language">${result['booklang']}</td>
-                    <td id="status">${result['Status']}</td>
+
+                    %if result['Status'] == 'Open':
+                        <td id="status"><a href="openBook?bookLink=${result['booklink']}" target="_new">${result['Status']}</a></td>
+                    %else:
+                        <td id="status">${result['Status']}</td>
+                    %endif
                 </tr>
         %endfor
         </tbody>
