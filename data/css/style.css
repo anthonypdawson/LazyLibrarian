@@ -317,8 +317,8 @@ div.progress-container > div { background-color: #0ebeed; height: 14px;   -webki
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff339bb9', GradientType=0);
 }
 .havebooks { font-size: 13px; margin-left: 36px; padding-bottom: 3px; vertical-align: middle; }
-.progressbar-back-text  { font-size: 13px; padding-bottom: 3px; vertical-align: middle; background-color: transparent; position: absolute; text-align:center; width:100%;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); z-index:800; }
-.progressbar-front-text  { font-size: 13px; padding-bottom: 3px; vertical-align: middle; background-color: transparent; display:block;
+.progressbar-back-text  { font-size: 13px; vertical-align: middle; background-color: transparent; position: absolute; text-align:center; width:100%;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); z-index:800; }
+.progressbar-front-text  { font-size: 13px;  vertical-align: middle;  background-color: transparent; display:block;
 width:100%; position:absolute; color:black; overflow:hidden; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;}
 
 footer { margin: 20px auto 20px auto; }

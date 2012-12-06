@@ -13,6 +13,7 @@ from lazylibrarian.searchnzb import searchbook
 from lazylibrarian.formatter import checked
 from lazylibrarian.gr import GoodReads
 
+import lib.simplejson as simplejson
 
 def serve_template(templatename, **kwargs):
 
@@ -302,6 +303,33 @@ class WebInterface(object):
         versioncheck.checkGithub()
         raise cherrypy.HTTPRedirect("config")
     checkForUpdates.exposed = True
+
+    def getLog(self,iDisplayStart=0,iDisplayLength=100,iSortCol_0=0,sSortDir_0="desc",sSearch="",**kwargs):
+        iDisplayStart = int(iDisplayStart)
+        iDisplayLength = int(iDisplayLength)
+        filtered = []
+        if sSearch == "":
+            filtered = lazylibrarian.LOGLIST[::]
+        else:
+            filtered = [row for row in lazylibrarian.LOGLIST for column in row if sSearch in column]
+
+        sortcolumn = 0
+        if iSortCol_0 == '1':
+            sortcolumn = 2
+        elif iSortCol_0 == '2':
+            sortcolumn = 1
+        filtered.sort(key=lambda x:x[sortcolumn],reverse=sSortDir_0 == "desc")        
+
+        rows = filtered[iDisplayStart:(iDisplayStart+iDisplayLength)]
+        rows = [[row[0],row[2],row[1]] for row in rows]
+
+        dict = {'iTotalDisplayRecords':len(filtered),
+                'iTotalRecords':len(lazylibrarian.LOGLIST),
+                'aaData':rows,
+                }
+        s = simplejson.dumps(dict)
+        return s
+    getLog.exposed = True
 
     def logs(self):
         return serve_template(templatename="logs.html", title="Log", lineList=lazylibrarian.LOGLIST)
