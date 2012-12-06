@@ -13,11 +13,15 @@
             %else:
                 <li><a href="pauseAuthor?AuthorID=${author['AuthorID']}" id="button"> Pause Author</a></li>
             %endif
-            %if len(languages) > 1:
+            %if len(languages) >= 1:
                 <li>Language:&nbsp</li>
+                
+                <li><select onchange="window.location = 'authorPage?AuthorName=${author['AuthorName']}&BookLang=' + this.options[this.selectedIndex].value">
+                    <option>Select</option>
                 %for language in languages:
-                    <li><a href="authorPage?AuthorName=${author['AuthorName']}&BookLang=${language['BookLang']}" id="button">${language['BookLang']}</a></li>
+                    <option value="${language['BookLang']}">${language['BookLang']}</option>
                 %endfor
+                </select></li>
             %endif
         </ul>
     </div>
@@ -121,15 +125,22 @@
 <%def name="headIncludes()">
     <link rel="stylesheet" href="css/data_table.css">
     %if author['Status'] == 'Loading':
-    <meta http-equiv="refresh" content="5">
+    <meta http-equiv="refresh" content="20">
+    <script>
+        $(document).ready(function () {
+            showMsg("Getting Authors Books", true);
+        });
+     </script>
     %endif
 </%def>
 
 <%def name="javascriptIncludes()">
     <script src="js/libs/jquery.dataTables.min.js"></script>
     <script>
+        
     $(document).ready(function()
     {
+
         $('#book_table').dataTable(
             {
                 "aoColumns": [

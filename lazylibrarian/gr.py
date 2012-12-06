@@ -124,23 +124,32 @@ class GoodReads:
 						bookLanguage = "Unknown"
 					
 					if not (re.match('[^\w-]', book.find('title').text)): #remove books with bad caracters in title
-						books_dict.append({
-								'authorname': authorNameResult,
-								'bookid': book.find('id').text,
-								'bookname': book.find('title').text,
-								'booksub': "",
-								'bookisbn': book.find('isbn').text,
-								'bookpub': book.find('publisher').text,
-								'bookdate': pubyear,
-								'booklang': bookLanguage,
-								'booklink': book.find('link').text,
-								'bookrate': float(book.find('average_rating').text),
-								'bookimg': bookimg,
-								'bookpages': book.find('num_pages').text,
-								'bookgenre': "",
-								'bookdesc': book.find('description').text
-						})
+						myDB = database.DBConnection()
+						controlValueDict = {"BookID": book.find('id').text}
+						newValueDict = {
+						    "AuthorName":   authorNameResult,
+						    "AuthorID":     authorid,
+						    "AuthorLink":   "",
+						    "BookName":     book.find('title').text,
+						    "BookSub":      "",
+						    "BookDesc":     book.find('description').text,
+						    "BookIsbn":     book.find('isbn').text,
+						    "BookPub":      book.find('publisher').text,
+						    "BookGenre":    "",
+						    "BookImg":      bookimg,
+						    "BookLink":     book.find('link').text,
+						    "BookRate":     float(book.find('average_rating').text),
+						    "BookPages":    book.find('num_pages').text,
+						    "BookDate":     pubyear,
+						    "BookLang":     bookLanguage,
+						    "Status":       "Skipped",
+						    "BookAdded":    formatter.today()
+						}
+
+						myDB.upsert("books", newValueDict, controlValueDict)
+
 						logger.debug(u"book found " + book.find('title').text + " " + pubyear)
+                       
 						resultsCount = resultsCount + 1
 					logger.debug(u"book found " + book.find('title').text + " " + pubyear)
 					if  (re.match('[^\w-]', book.find('title').text)):

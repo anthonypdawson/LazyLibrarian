@@ -251,9 +251,9 @@ class WebInterface(object):
 
 			logger.info('bookdir ' + dest_dir);
 			if os.path.isdir(dest_dir):
-				for file2 in os.listdir(dest_dir):
-					logger.info('Openning file ' + str(file2))
+				for file2 in os.listdir(dest_dir):	
 					if ((file2.lower().find(".jpg") <= 0) & (file2.lower().find(".opf") <= 0)):
+						logger.info('Openning file ' + str(file2))
 						return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
     openBook.exposed = True
 
@@ -269,7 +269,7 @@ class WebInterface(object):
                 logger.debug('Status set to %s for BookID: %s' % (action, bookid))
 
                 #update authors needs to be updated every time a book is marked differently
-                query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND Status="Have" OR Status="Open"' % AuthorName
+                query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND (Status="Have" OR Status="Open")' % AuthorName
                 countbooks = myDB.action(query).fetchone()
                 havebooks = int(countbooks[0])
                 controlValueDict = {"AuthorName": AuthorName}

@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         %for author in authors:
-        	<%
+            <%
         		totalbooks = author['TotalBooks']
         		havebooks = author['HaveBooks']
         		if not havebooks:
@@ -80,7 +80,7 @@
                     "sInfo":"Showing _START_ to _END_ of _TOTAL_ authors",
                     "sInfoEmpty":"Showing 0 to 0 of 0 authors",
                     "sInfoFiltered":"(filtered from _MAX_ total authors)"},
-                "iDisplayLength": 25,
+                "iDisplayLength": 100,
                 "sPaginationType": "full_numbers",
                 "aaSorting": [[0, 'asc']],
             });

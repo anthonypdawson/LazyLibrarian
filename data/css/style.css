@@ -183,8 +183,8 @@ ul#authorhead_menu li { height: 100%; display: inline-table; }
 ul#authorhead_menu li a { vertical-align: top; color: #444444; font-size: 20px; text-decoration: none; }
 ul#authorhead_menu li a:hover { height: 100%; text-decoration: underline}
 
-div#searchbar { margin: 12px 30px auto auto; float: right; }
-div#searchbar input {background-color:#282D34; box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.25), 0 1px 0px rgba(255, 255, 255, 0.25); border:0px; border-radius: 3px;color:#A9A9A9;padding:5px; padding-left:10px;padding-right: 10px;}
+div#searchbar { margin: 10px 30px auto auto; float: right; }
+div#searchbar input {background-color:#282D34; box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.25), 0 1px 0px rgba(255, 255, 255, 0.25); border:0px; border-radius: 3px;color:#A9A9A9;padding:5px; padding-left:30px;padding-right: 25px;}
 
 #searchbox {min-width:100px; max-width:220px;}
 
@@ -451,6 +451,11 @@ div#shutdown{ text-align: center; vertical-align: middle; }
   -moz-opacity: 0.8 !important;
   -khtml-opacity: 0.8 !important;
   opacity: 0.8 !important;
+    
+  	margin-bottom:20px;
+	margin-right:80px;
+	min-width:100px;
+	max-width:250px;
 }
 #ajaxMsg .msg {
   font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
@@ -461,7 +466,7 @@ div#shutdown{ text-align: center; vertical-align: middle; }
   position: relative;
   top: 2px;
 }
-#ajaxMsg.success {
+#ajaxMsg .success {
   background-image: -moz-linear-gradient(#d3ffd7, #c2edc6) !important;
   background-image: linear-gradient(#d3ffd7, #c2edc6) !important;
   background-image: -webkit-linear-gradient(#d3ffd7, #c2edc6) !important;
@@ -602,4 +607,16 @@ span.deleteicon input {
 #tabs .active
 {
     background-color: #f5f6f8; 
+}
+
+div#searchbar .mini-icon {
+    height: 15px;
+    width: 15px;
+    background: url("../images/icon_search.png") left top no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    display: block;
+    margin-left: 6px;
+    margin-top: -20px;
+    z-index:999;
 }

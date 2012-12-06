@@ -118,32 +118,7 @@ def addAuthorToDB(authorname=None):
         logger.error("Nothing found")
 
 # process books
-    bookscount = 0
-    books = GR.get_author_books(authorid)
-    for book in books:
-        	controlValueDict = {"BookID": book['bookid']}
-        	newValueDict = {
-                "AuthorName":   book['authorname'],
-                "AuthorID":     authorid,
-                "AuthorLink":   authorimg,
-                "BookName":     book['bookname'],
-                "BookSub":      book['booksub'],
-                "BookDesc":     book['bookdesc'],
-                "BookIsbn":     book['bookisbn'],
-                "BookPub":      book['bookpub'],
-                "BookGenre":    book['bookgenre'],
-                "BookImg":      book['bookimg'],
-                "BookLink":     book['booklink'],
-                "BookRate":     book['bookrate'],
-                "BookPages":    book['bookpages'],
-                "BookDate":     book['bookdate'],
-                "BookLang":     book['booklang'],
-                "Status":       "Skipped",
-                "BookAdded":    formatter.today()
-        		}
-
-        	myDB.upsert("books", newValueDict, controlValueDict)
-        	bookscount = bookscount+1 
+    GR.get_author_books(authorid)
 
     lastbook = myDB.action("SELECT BookName, BookLink, BookDate from books WHERE AuthorID='%s' order by BookDate DESC" % authorid).fetchone()
     bookCount = myDB.select("SELECT COUNT(BookName) as counter FROM books WHERE AuthorID='%s'" % authorid)
