@@ -71,7 +71,7 @@ def processDir():
                     myDB.upsert("books", newValueDict, controlValueDict)
 
                     #update authors
-                    query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND Status="Have" OR Status="Open"' % authorname
+                    query = 'SELECT COUNT(*) FROM books WHERE AuthorName="%s" AND (Status="Have" OR Status="Open")' % authorname
                     countbooks = myDB.action(query).fetchone()
                     havebooks = int(countbooks[0])
                     controlValueDict = {"AuthorName": authorname}
