@@ -155,9 +155,17 @@ ul#nav li a:hover { text-decoration: underline; }
 div#subhead_container { margin-top:8px;height: 28px; line-height:22px;width:100%; background-color:#f2f2f2; float: left; list-style-type: none; z-index: 997; overflow: hidden; color:black;}
 ul#subhead_menu li { width: 100%; height: 100%; vertical-align: middle; color: black; display: inline; }
 ul#subhead_menu li a { text-align:right; vertical-align: middle; color: black; font-size: 12px; text-decoration: none; }
-ul#subhead_menu li a:hover { width: 100%; height: 100%; background-color: #4D90FE;
-border: 1px solid #3079ED;
-color: white !important;}
+ul#subhead_menu li a:hover { width: 100%; height: 100%; background-color: #4D90FE; border: 1px solid #3079ED; color: white !important;}
+
+.button
+{
+    background-color: #EBEBEB;
+    border: 1px solid #CECECE;
+    padding:5px 5px 5px 5px; 
+    vertical-align: middle;
+}
+.button a { color: black; font-size: 12px; text-decoration: none; }
+.button:hover { width: 100%; height: 100%; background-color: #4D90FE; border: 1px solid #3079ED; color: white !important; text-decoration: none;}
 
 .addAuthor { margin-left:30px; line-height:30px;}
 
@@ -229,6 +237,7 @@ table#book_table th#date { text-align: left; width: 50px; }
 table#book_table th#number { text-align: center; width: 50px; }
 table#book_table th#language { text-align: center; min-width: 25px; display:none;}
 table#book_table th#stars { text-align: center; width: 50px; }
+table#book_table th#addAuthor { text-align: center; width: 100px; min-width:100px; max-width:100px; }
 
 table#book_table td#select { vertical-align: middle; text-align: left; }
 table#book_table td#bookart { vertical-align: middle; text-align: center; }
@@ -241,6 +250,7 @@ table#book_table td#date { vertical-align: middle; text-align: center; }
 table#book_table td#number { vertical-align: middle; text-align: right; }
 table#book_table td#language { vertical-align: middle; text-align: center;  display:none;}
 table#book_table td#stars { vertical-align: middle; text-align: center; }
+table#book_table td#addAuthor { text-align: center;  vertical-align: middle; width: 100px; min-width:100px; max-width:100px;}
 
 img.bookArt { float: left; padding-right: 5px; }
 div#bookheader { padding-top: 48px; height: 200px; }

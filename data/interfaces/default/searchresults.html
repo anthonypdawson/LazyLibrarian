@@ -6,24 +6,15 @@
         <h1>Search Results<h1>
     </div>-->
 
-    <p class="leftside" >
-    <form action="addResults" method="get">
-            <select name="action" hidden="true">
-                  <option value="author">Add Author</option>
-<!--                  <option value="book">Add Book</option>-->
-            </select>
-        <input style="margin-left:30px;margin-bottom:10px;" type="submit" value="Add selected author" id="add">
-    </p>
-
     <table class="display" id="book_table">
         <thead>
             <tr>
-				<th id="select"></th>
 				<th id="bookart">Cover</th>
 				<th id="authorname">Author</th>
 				<th id="bookname">Title</th>
 				<th id="date">Released</th>
 				<th id="stars">Rating</th>
+                <th id="addAuthor">Add</th>
              </tr>
         </thead>
 
@@ -47,18 +38,18 @@
                         starimg = '0-stars.png'
                 %>
 					<tr class="gradeZ">
-						<td id="select"><input type="checkbox" name="${result['authorname']}&${result['bookid']}" class="checkbox" /></td>
 						<td id="bookart"><a href="${result['bookimg']}" target="_new"><img src="${result['bookimg']}" height="75" ></a></td>
 						<td id="authorname">${result['authorname']}</td>
 						<td id="bookname"><a href="${result['booklink']}" target="_new">${result['bookname']}</a></td>
 						<td id="date">${result['bookdate']}</td>
 						<td id="stars"><img src="images/${starimg}" height="10"></td>
+                        <td id="addAuthor"><a class="button" href="addResults?authorname=${result['authorname']}" target="_new">Add Author</a></td>
 					</tr>
 				%endfor
             %endif
         </tbody>
     </table>
-    </form>
+        </form>
 </%def>
 
 <%def name="headIncludes()">

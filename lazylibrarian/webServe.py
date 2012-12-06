@@ -214,22 +214,10 @@ class WebInterface(object):
         raise cherrypy.HTTPRedirect("authorPage?AuthorID=%s" % AuthorID)
     refreshAuthor.exposed=True
 
-    def addResults(self, action=None, **args):
-        for arg in args:
-            if not arg == 'book_table_length':
-                name = arg.split('&')
-                authorname = name[0]
-                bookid = name[1]
-
-                if action == 'author':
-                    threading.Thread(target=importer.addAuthorToDB, args=[authorname]).start()
-                    raise cherrypy.HTTPRedirect("authorPage?AuthorName=%s" % authorname)
-                elif action == 'book':
-                    threading.Thread(target=importer.addBookToDB, args=[bookid, authorname]).start()
-                    raise cherrypy.HTTPRedirect("bookPage?BookID=%s" % bookid)
-                else:
-                    logger.info('Oops, a bug')
-
+    def addResults(self, authorname):
+        args = None;
+        threading.Thread(target=importer.addAuthorToDB, args=[authorname]).start()
+        raise cherrypy.HTTPRedirect("authorPage?AuthorName=%s" % authorname)
     addResults.exposed = True
 
 #BOOKS
