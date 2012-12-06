@@ -237,7 +237,7 @@ class WebInterface(object):
 		
 		# find book
 		bookdata = myDB.select('SELECT * from books WHERE BookLink=\'' + bookLink + '\'')
-		logger.info(('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
+		logger.debug(('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
 		if bookdata:
 			authorName = bookdata[0]["AuthorName"];
 			bookName = bookdata[0]["BookName"];
@@ -249,7 +249,7 @@ class WebInterface(object):
 			else:
 				dest_dir = lazylibrarian.DESTINATION_DIR + '//' + authorName + '//' + bookName
 
-			logger.info('bookdir ' + dest_dir);
+			logger.debug('bookdir ' + dest_dir);
 			if os.path.isdir(dest_dir):
 				for file2 in os.listdir(dest_dir):	
 					if ((file2.lower().find(".jpg") <= 0) & (file2.lower().find(".opf") <= 0)):
