@@ -259,10 +259,10 @@ table#log_table { background-color: white; }
 
 table#log_table th#timestamp { text-align: left; width: 150px; }
 table#log_table th#level { text-align: left; width: 60px; }
-table#log_table th#message { text-align: left; min-width: 500px; }
+table#log_table th#message { text-align: left; min-width: 200px; }
 table#log_table td#timestamp { text-align: left; min-width: 150px; }
-table#log_table td#level { text-align: left; min-width: 60px;  }
-table#log_table td#message { text-align: left; min-width: 500px; }
+table#log_table td#level { text-align: left;  }
+table#log_table td#message { text-align: left; }
 
 div.progress-container { position:relative; width: 100%; height: 14px; margin: 2px 5px 2px 0;  float: left; 
 background-color: #F7F7F7;
