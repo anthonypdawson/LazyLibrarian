@@ -53,8 +53,8 @@ table#book_table td#stars { display:none; }
 /* Log */
 table#log_table { background-color: white; }
 table#log_table th#timestamp { text-align: left; width: 150px; }
-table#log_table th#level { display:none; }
+table#log_table th#level {  }
 table#log_table th#message { text-align: left; min-width: 300px; }
 table#log_table td#timestamp { text-align: left; min-width: 150px; }
-table#log_table td#level { display:none; }
+table#log_table td#level {  }
 table#log_table td#message { text-align: left; min-width: 300px; }
