@@ -131,23 +131,26 @@ def DownloadMethod(bookid=None, nzbprov=None, nzbtitle=None, nzburl=None):
     elif lazylibrarian.BLACKHOLE:
 
         try:
-            nzbfile = urllib2.urlopen(nzburl, timeout=30).read()
+            nzbfile = urllib2.urlopen(nzburl, timeout=90).read()
 
         except urllib2.URLError, e:
             logger.warn('Error fetching nzb from url: ' + nzburl + ' %s' % e)
+            nzbfile = False;
 
-        nzbname = str.replace(str(nzbtitle), ' ', '_') + '.nzb'
-        nzbpath = os.path.join(lazylibrarian.BLACKHOLEDIR, nzbname)
+        if (nzbfile):
 
-        try:
-            f = open(nzbpath, 'w')
-            f.write(nzbfile)
-            f.close()
-            logger.info('NZB file saved to: ' + nzbpath)
-            download = True
-        except Exception, e:
-            logger.error('%s not writable, NZB not saved. Error: %s' % (nzbpath, e))
-            download = False
+            nzbname = str(nzbtitle) + '.nzb';
+            nzbpath = os.path.join(lazylibrarian.BLACKHOLEDIR, nzbname);
+
+            try:
+                f = open(nzbpath, 'w');
+                f.write(nzbfile);
+                f.close();
+                logger.info('NZB file saved to: ' + nzbpath);
+                download = True;
+            except Exception, e:
+                logger.error('%s not writable, NZB not saved. Error: %s' % (nzbpath, e));
+                download = False;
 
     else:
         logger.error('No downloadmethod is enabled, check config.')
