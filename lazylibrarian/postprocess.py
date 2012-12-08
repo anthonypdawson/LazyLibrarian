@@ -98,12 +98,16 @@ def processDestination(pp_path=None, dest_path=None, authorname=None, bookname=N
             pp = True
             #try and rename the actual book file
             for file2 in os.listdir(dest_path):
-            	logger.info('file extension ' + str(file2).split('.')[-1])
+            	logger.debug('file extension: ' + str(file2).split('.')[-1])
             	if ((file2.lower().find(".jpg") <= 0) & (file2.lower().find(".opf") <= 0)):
-            		logger.info('file ' + str(file2))
+            		logger.debug('file: ' + str(file2))
             		os.rename(os.path.join(dest_path, file2), os.path.join(dest_path, bookname + '.' + str(file2).split('.')[-1]))
+            try:
+                os.chmod(dest_path, 0777);
+            except Exception, e:
+                logger.info("Could not chmod path: " + str(file2));
         except OSError:
-            logger.error('Could not create destinationfolder or rename the downloaded ebook. Check permissions of: ' + lazylibrarian.DESTINATION_DIR)
+            logger.error('Could not create destination folder or rename the downloaded ebook. Check permissions of: ' + lazylibrarian.DESTINATION_DIR)
             pp = False
     else:
         pp = False

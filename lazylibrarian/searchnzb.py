@@ -148,6 +148,10 @@ def DownloadMethod(bookid=None, nzbprov=None, nzbtitle=None, nzburl=None):
                 f.close();
                 logger.info('NZB file saved to: ' + nzbpath);
                 download = True;
+                try:
+                    os.chmod(nzbpath, 0777);
+                except Exception, e:
+                    logger.info("Could not chmod path: " + str(file2));
             except Exception, e:
                 logger.error('%s not writable, NZB not saved. Error: %s' % (nzbpath, e));
                 download = False;
