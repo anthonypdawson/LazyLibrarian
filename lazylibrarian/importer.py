@@ -84,7 +84,6 @@ def addAuthorToDB(authorname=None):
 
     GR = GoodReads(authorname, type)
     
-
     query = "SELECT * from authors WHERE AuthorName='%s'" % authorname.replace("'","''")
     dbauthor = myDB.action(query).fetchone()
     controlValueDict = {"AuthorName": authorname}
