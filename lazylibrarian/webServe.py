@@ -172,7 +172,7 @@ class WebInterface(object):
         if BookLang:
             querybooks = "SELECT * from books WHERE AuthorName LIKE '%s' AND BookLang = '%s' order by BookDate DESC, BookRate DESC" % (AuthorName.replace("'","''"), BookLang)
         else:
-            querybooks = "SELECT * from books WHERE AuthorName LIKE '%s' AND BookLang = '%s' order by BookDate DESC, BookRate DESC" % (AuthorName.replace("'","''"), lazylibrarian.IMP_PREFLANG)
+            querybooks = "SELECT * from books WHERE AuthorName LIKE '%s' AND (BookLang = '%s' OR BookLang = 'Unknown') order by BookDate DESC, BookRate DESC" % (AuthorName.replace("'","''"), lazylibrarian.IMP_PREFLANG)
 
         queryauthors = "SELECT * from authors WHERE AuthorName LIKE '%s'" % AuthorName.replace("'","''")
 
