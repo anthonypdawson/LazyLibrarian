@@ -4,7 +4,7 @@ from xml.etree import ElementTree
 
 import lazylibrarian
 
-from lazylibrarian import logger
+from lazylibrarian import logger, SimpleCache
 
 
 def NewzNab(book=None):
@@ -16,17 +16,18 @@ def NewzNab(book=None):
 
     if lazylibrarian.EBOOK_TYPE == None:
         params = {
-            "t": "search",
+            "t": "book",
             "apikey": lazylibrarian.NEWZNAB_API,
-            "cat": 7020,
-            "q": book['searchterm']
+            #"cat": 7020,
+            "author": book['searchterm']
         }
     else:
         params = {
             "t": "search",
             "apikey": lazylibrarian.NEWZNAB_API,
             "cat": 7020,
-            "q": book['searchterm']
+            "q": book['searchterm'],
+            "extended": 1,
         }
 
     if not str(HOST)[:4] == "http":
@@ -34,10 +35,20 @@ def NewzNab(book=None):
 
     URL = HOST + '/api?' + urllib.urlencode(params)
 
-    try:
-        data = ElementTree.parse(urllib2.urlopen(URL, timeout=30))
-    except (urllib2.URLError, IOError, EOFError), e:
-        logger.warn('Error fetching data from %s: %s' % (lazylibrarian.NEWZNAB_HOST, e))
+    try :
+        request = urllib2.Request(URL)
+        request.add_header('User-Agent', 'lazylibrary/0.0 +https://github.com/LibrarianMike/LazyLibrarian')
+        opener = urllib2.build_opener(SimpleCache.CacheHandler(".urllib2cache"), SimpleCache.ThrottlingProcessor(5))
+        resp = opener.open(request)
+
+        try:
+            data = ElementTree.parse(resp)
+        except (urllib2.URLError, IOError, EOFError), e:
+            logger.warn('Error fetching data from %s: %s' % (lazylibrarian.NEWZNAB_HOST, e))
+            data = None
+
+    except Exception, e:
+        logger.error("Error 403 openning url")
         data = None
 
     if data:

@@ -9,7 +9,7 @@ from lib.apscheduler.scheduler import Scheduler
 
 import threading
 
-from lazylibrarian import logger, postprocess, searchnzb
+from lazylibrarian import logger, postprocess, searchnzb, SimpleCache
 
 FULL_PATH = None
 PROG_DIR = None
@@ -81,9 +81,9 @@ EBOOK_TYPE = 'epub'
 LATEST_VERSION = None
 CURRENT_VERSION = None
 
-VERSIONCHECK_INTERVAL = 120
-SEARCH_INTERVAL = 60
-SCAN_INTERVAL = 5
+VERSIONCHECK_INTERVAL = 120 #Every 2 hours
+SEARCH_INTERVAL = 720 #Every 12 hours
+SCAN_INTERVAL = 10 #Every 10 minutes
 
 def CheckSection(sec):
     """ Check if INI section exists, if not create it """
@@ -248,6 +248,14 @@ def initialize():
 
         # Start the logger, silence console logging if we need to
         logger.lazylibrarian_log.initLogger(loglevel=LOGLEVEL)
+
+        # Clearing cache
+        if os.path.exists(".urllib2cache"):
+            for f in os.listdir(".urllib2cache"):
+                os.unlink("%s/%s" % (".urllib2cache", f))
+        # Clearing throttling timeouts
+        t = SimpleCache.ThrottlingProcessor()
+        t.lastRequestTime.clear()
 
         # Initialize the database
         try:

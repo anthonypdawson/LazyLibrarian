@@ -30,22 +30,14 @@ def searchbook(books=None):
         book = searchbook[2]
 
         dic = {'...':'', ' & ':' ', ' = ': ' ', '?':'', '$':'s', ' + ':' ', '"':'', ',':'', '*':'', ':':''}
-        dicSearchFormatting = {' ':' +', '.':' +', ' + ':' '}
-        dicSearchFormatting1 = {' + ':' '}
+        dicSearchFormatting = {'.':' +', ' + ':' '}
 
         author = formatter.latinToAscii(formatter.replace_all(author, dic))
         book = formatter.latinToAscii(formatter.replace_all(book, dic))
-		
-		#OLD SEARCH TERM
-        searchterm = author + ' ' + book + ' ' + lazylibrarian.EBOOK_TYPE
-        searchterm = re.sub('[\.\-\/]', ' ', searchterm).encode('utf-8')
-        searchterm = re.sub(r"\s\s+" , " ", searchterm) # strip any double white space
-        searchlist.append({"bookid": bookid, "bookName":searchbook[2], "authorName":searchbook[1], "searchterm": searchterm.strip()})
 
-        # TRY A SECCOND SEARCH TERM just using author name and book type
+        # TRY SEARCH TERM just using author name and book type
         author = formatter.latinToAscii(formatter.replace_all(author, dicSearchFormatting))
-        author = formatter.latinToAscii(formatter.replace_all(author, dicSearchFormatting1))
-        searchterm1 = '+' + author + ' +' + lazylibrarian.EBOOK_TYPE 
+        searchterm1 = author # + ' ' + lazylibrarian.EBOOK_TYPE 
         searchterm1 = re.sub('[\.\-\/]', ' ', searchterm1).encode('utf-8')
         searchterm1 = re.sub(r'\(.*?\)', '', searchterm1).encode('utf-8')
         searchterm1 = re.sub(r"\s\s+" , " ", searchterm1) # strip any double white space
@@ -131,7 +123,10 @@ def DownloadMethod(bookid=None, nzbprov=None, nzbtitle=None, nzburl=None):
     elif lazylibrarian.BLACKHOLE:
 
         try:
-            nzbfile = urllib2.urlopen(nzburl, timeout=90).read()
+            req = urllib2.Request(nzburl)
+            req.add_header('User-Agent', 'lazylibrary/0.0 +https://github.com/LibrarianMike/LazyLibrarian')
+            nzbfile = urllib2.urlopen(req, timeout=90).read()
+   
 
         except urllib2.URLError, e:
             logger.warn('Error fetching nzb from url: ' + nzburl + ' %s' % e)

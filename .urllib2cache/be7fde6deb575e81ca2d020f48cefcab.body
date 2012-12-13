@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:newznab="http://www.newznab.com/DTD/2010/feeds/attributes/">
+<channel>
+<atom:link href="http://jshea.net:54009/api?q=Thea+Harrison&amp;apikey=fb863574a447cca8beef7d25623e4aab&amp;t=search&amp;extended=1&amp;cat=7020" rel="self" type="application/rss+xml" />
+<title>Private Newznab</title>
+<description>Private Newznab Feed</description>
+<link>http://jshea.net:54009/</link>
+<language>en-gb</language>
+<webMaster>tkosh@tkosh.com (Private Newznab)</webMaster>
+<category></category>
+<image>
+	<url>http://jshea.net:54009/views/images/banner.jpg</url>
+	<title>Private Newznab</title>
+	<link>http://jshea.net:54009/</link>
+	<description>Visit Private Newznab - Please keep off the Grass.</description>
+</image>
+
+<newznab:response offset="0" total="12" />
+<item>
+	<title>Thea Harrison - [Elder Races 05] - Lord&#039;s Fall (mobi)</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/7335ce3cf8e67c87d4431b129c5bb0b4</guid>
+	<link>http://jshea.net:54009/getnzb/7335ce3cf8e67c87d4431b129c5bb0b4.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/7335ce3cf8e67c87d4431b129c5bb0b4#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 20:30:42 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Thea Harrison - [Elder Races 05] - Lord&#039;s Fall (mobi)</description>
+	<enclosure url="http://jshea.net:54009/getnzb/7335ce3cf8e67c87d4431b129c5bb0b4.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="455441" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="455441" />
+	<newznab:attr name="guid" value="7335ce3cf8e67c87d4431b129c5bb0b4" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="Fake@address.com (Psychopath)" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Tue, 20 Nov 2012 10:55:47 -0500" />
+	<newznab:attr name="group" value="alt.binaries.e-book.flood" />
+
+</item>
+<item>
+	<title>Thea Harrison - [Elder Races 05] - Lord&#039;s Fall (html)</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/4bead347fd412b7ab8e78601a0656ad7</guid>
+	<link>http://jshea.net:54009/getnzb/4bead347fd412b7ab8e78601a0656ad7.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/4bead347fd412b7ab8e78601a0656ad7#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 20:30:42 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Thea Harrison - [Elder Races 05] - Lord&#039;s Fall (html)</description>
+	<enclosure url="http://jshea.net:54009/getnzb/4bead347fd412b7ab8e78601a0656ad7.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="270379" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="270379" />
+	<newznab:attr name="guid" value="4bead347fd412b7ab8e78601a0656ad7" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="Fake@address.com (Psychopath)" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Tue, 20 Nov 2012 10:55:45 -0500" />
+	<newznab:attr name="group" value="alt.binaries.e-book.flood" />
+
+</item>
+<item>
+	<title>Thea Harrison - [Elder Races 05] - Lord&#039;s Fall (epub)</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/9c1210e0fd59a62c5a1a8cb984611494</guid>
+	<link>http://jshea.net:54009/getnzb/9c1210e0fd59a62c5a1a8cb984611494.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/9c1210e0fd59a62c5a1a8cb984611494#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 20:35:55 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Thea Harrison - [Elder Races 05] - Lord&#039;s Fall (epub)</description>
+	<enclosure url="http://jshea.net:54009/getnzb/9c1210e0fd59a62c5a1a8cb984611494.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="400203" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="400203" />
+	<newznab:attr name="guid" value="9c1210e0fd59a62c5a1a8cb984611494" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="Fake@address.com (Psychopath)" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Wed, 07 Nov 2012 10:33:35 -0500" />
+	<newznab:attr name="group" value="alt.binaries.e-book.flood" />
+
+</item>
+<item>
+	<title>Thea Harrison - [Elder Races 04.8] - Hunter&#039;s Season [Samhain] (mobi)</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/d9a7e252122f84ce34fa75c7f8d543fc</guid>
+	<link>http://jshea.net:54009/getnzb/d9a7e252122f84ce34fa75c7f8d543fc.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/d9a7e252122f84ce34fa75c7f8d543fc#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 20:29:56 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Thea Harrison - [Elder Races 04.8] - Hunter&#039;s Season [Samhain] (mobi)</description>
+	<enclosure url="http://jshea.net:54009/getnzb/d9a7e252122f84ce34fa75c7f8d543fc.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="368338" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="368338" />
+	<newznab:attr name="guid" value="d9a7e252122f84ce34fa75c7f8d543fc" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="hoofhearted@thestables.com (Hoof Hearted)" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sat, 13 Oct 2012 14:51:46 -0400" />
+	<newznab:attr name="group" value="alt.binaries.e-book.flood" />
+
+</item>
+<item>
+	<title>Thea Harrison - [Elder Races 04.8] - Hunter&#039;s Season [Samhain] (html)</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/8c69e33295ce33efa418f9686a49eb6a</guid>
+	<link>http://jshea.net:54009/getnzb/8c69e33295ce33efa418f9686a49eb6a.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/8c69e33295ce33efa418f9686a49eb6a#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 20:29:56 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Thea Harrison - [Elder Races 04.8] - Hunter&#039;s Season [Samhain] (html)</description>
+	<enclosure url="http://jshea.net:54009/getnzb/8c69e33295ce33efa418f9686a49eb6a.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="166953" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="166953" />
+	<newznab:attr name="guid" value="8c69e33295ce33efa418f9686a49eb6a" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="hoofhearted@thestables.com (Hoof Hearted)" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sat, 13 Oct 2012 14:51:45 -0400" />
+	<newznab:attr name="group" value="alt.binaries.e-book.flood" />
+
+</item>
+<item>
+	<title>Thea Harrison - [Elder Races 04.8] - Hunter&#039;s Season [Samhain] (epub)</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/a3dcb58e154e87db2a4c5908ebe4189b</guid>
+	<link>http://jshea.net:54009/getnzb/a3dcb58e154e87db2a4c5908ebe4189b.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/a3dcb58e154e87db2a4c5908ebe4189b#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 20:34:19 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Thea Harrison - [Elder Races 04.8] - Hunter&#039;s Season [Samhain] (epub)</description>
+	<enclosure url="http://jshea.net:54009/getnzb/a3dcb58e154e87db2a4c5908ebe4189b.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="935636" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="935636" />
+	<newznab:attr name="guid" value="a3dcb58e154e87db2a4c5908ebe4189b" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="hoofhearted@thestables.com (Hoof Hearted)" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sat, 13 Oct 2012 14:51:44 -0400" />
+	<newznab:attr name="group" value="alt.binaries.e-book.flood" />
+
+</item>
+<item>
+	<title>Harrison Thea-True Colors</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/0fc4cf79a7a185f35c5538387d618ac4</guid>
+	<link>http://jshea.net:54009/getnzb/0fc4cf79a7a185f35c5538387d618ac4.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/0fc4cf79a7a185f35c5538387d618ac4#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 19:56:44 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Harrison Thea-True Colors</description>
+	<enclosure url="http://jshea.net:54009/getnzb/0fc4cf79a7a185f35c5538387d618ac4.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="109900" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="109900" />
+	<newznab:attr name="guid" value="0fc4cf79a7a185f35c5538387d618ac4" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="none@none.com" />
+
+	<newznab:attr name="grabs" value="3" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sun, 29 Jul 2012 00:15:45 -0400" />
+	<newznab:attr name="group" value="alt.binaries.ebook" />
+
+</item>
+<item>
+	<title>Harrison Thea-Storms Heart</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/b9c1382167339e2171b759c206587b4f</guid>
+	<link>http://jshea.net:54009/getnzb/b9c1382167339e2171b759c206587b4f.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/b9c1382167339e2171b759c206587b4f#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 19:56:45 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Harrison Thea-Storms Heart</description>
+	<enclosure url="http://jshea.net:54009/getnzb/b9c1382167339e2171b759c206587b4f.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="564359" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="564359" />
+	<newznab:attr name="guid" value="b9c1382167339e2171b759c206587b4f" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="none@none.com" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sun, 29 Jul 2012 00:15:45 -0400" />
+	<newznab:attr name="group" value="alt.binaries.ebook" />
+
+</item>
+<item>
+	<title>Harrison Thea-Serpents Kiss</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/3fcc194411b1ab7ee90d138d0763078b</guid>
+	<link>http://jshea.net:54009/getnzb/3fcc194411b1ab7ee90d138d0763078b.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/3fcc194411b1ab7ee90d138d0763078b#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 19:56:44 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Harrison Thea-Serpents Kiss</description>
+	<enclosure url="http://jshea.net:54009/getnzb/3fcc194411b1ab7ee90d138d0763078b.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="379605" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="379605" />
+	<newznab:attr name="guid" value="3fcc194411b1ab7ee90d138d0763078b" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="none@none.com" />
+
+	<newznab:attr name="grabs" value="6" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sun, 29 Jul 2012 00:15:44 -0400" />
+	<newznab:attr name="group" value="alt.binaries.ebook" />
+
+</item>
+<item>
+	<title>Harrison Thea-Natural Evil</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/1a299d083b12a9ea80e64ea4c2f96e7e</guid>
+	<link>http://jshea.net:54009/getnzb/1a299d083b12a9ea80e64ea4c2f96e7e.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/1a299d083b12a9ea80e64ea4c2f96e7e#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 19:56:44 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Harrison Thea-Natural Evil</description>
+	<enclosure url="http://jshea.net:54009/getnzb/1a299d083b12a9ea80e64ea4c2f96e7e.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="135040" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="135040" />
+	<newznab:attr name="guid" value="1a299d083b12a9ea80e64ea4c2f96e7e" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="none@none.com" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sun, 29 Jul 2012 00:15:29 -0400" />
+	<newznab:attr name="group" value="alt.binaries.ebook" />
+
+</item>
+<item>
+	<title>Harrison Thea-Oracles Moon</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/193b5dccc4a2dd4a29eb232ae75918c3</guid>
+	<link>http://jshea.net:54009/getnzb/193b5dccc4a2dd4a29eb232ae75918c3.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/193b5dccc4a2dd4a29eb232ae75918c3#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 19:56:44 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Harrison Thea-Oracles Moon</description>
+	<enclosure url="http://jshea.net:54009/getnzb/193b5dccc4a2dd4a29eb232ae75918c3.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="382566" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="382566" />
+	<newznab:attr name="guid" value="193b5dccc4a2dd4a29eb232ae75918c3" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="none@none.com" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sun, 29 Jul 2012 00:15:29 -0400" />
+	<newznab:attr name="group" value="alt.binaries.ebook" />
+
+</item>
+<item>
+	<title>Harrison Thea-Devils Gate</title>
+	<guid isPermaLink="true">http://jshea.net:54009/details/220a6c30246c7e1da44d8cbe4c404206</guid>
+	<link>http://jshea.net:54009/getnzb/220a6c30246c7e1da44d8cbe4c404206.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab</link>
+	<comments>http://jshea.net:54009/details/220a6c30246c7e1da44d8cbe4c404206#comments</comments> 	
+	<pubDate>Wed, 12 Dec 2012 19:56:44 -0500</pubDate> 
+	<category>Other &gt; Ebook</category> 	
+	<description>Harrison Thea-Devils Gate</description>
+	<enclosure url="http://jshea.net:54009/getnzb/220a6c30246c7e1da44d8cbe4c404206.nzb&amp;i=5&amp;r=fb863574a447cca8beef7d25623e4aab" length="281929" type="application/x-nzb" />
+
+	<newznab:attr name="category" value="7000" />
+	<newznab:attr name="category" value="7020" />
+	<newznab:attr name="size" value="281929" />
+	<newznab:attr name="guid" value="220a6c30246c7e1da44d8cbe4c404206" />
+	<newznab:attr name="files" value="1" />
+	<newznab:attr name="poster" value="none@none.com" />
+
+	<newznab:attr name="grabs" value="0" />
+	<newznab:attr name="comments" value="0" />
+	<newznab:attr name="password" value="-1" />
+	<newznab:attr name="usenetdate" value="Sun, 29 Jul 2012 00:15:28 -0400" />
+	<newznab:attr name="group" value="alt.binaries.ebook" />
+
+</item>
+
+</channel>
+</rss>
