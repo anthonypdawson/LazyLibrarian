@@ -123,6 +123,10 @@ def processIMG(dest_path=None, bookimg=None):
             imggoogle = imgGoogle()
             img.write(imggoogle.open(bookimg).read())
             img.close()
+            try:
+                os.chmod(coverpath, 0777);
+            except Exception, e:
+                logger.info("Could not chmod path: " + str(coverpath));
 
     except (IOError, EOFError), e:
         logger.error('Error fetching cover from url: %s, %s' % (bookimg, e))
@@ -164,6 +168,12 @@ def processOPF(dest_path=None, authorname=None, bookname=None, bookisbn=None, bo
         opf = open(opfpath, 'wb')
         opf.write(opfinfo)
         opf.close()
+
+        try:
+            os.chmod(opfpath, 0777);
+        except Exception, e:
+            logger.info("Could not chmod path: " + str(opfpath));
+
         logger.debug('Saved metadata to: ' + opfpath)
     else:
         logger.debug('%s allready exists. Did not create one.' % opfpath)
