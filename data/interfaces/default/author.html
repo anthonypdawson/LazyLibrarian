@@ -111,7 +111,7 @@
                     <td id="language">${result['booklang']}</td>
 
                     %if result['Status'] == 'Open':
-                        <td id="status"><a href="openBook?bookLink=${result['booklink']}" target="_new">${result['Status']}</a></td>
+                        <td id="status"><a class="button" href="openBook?bookLink=${result['booklink']}" target="_new">${result['Status']}</a></td>
                     %else:
                         <td id="status">${result['Status']}</td>
                     %endif

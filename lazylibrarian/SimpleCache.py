@@ -84,17 +84,17 @@ class CachedResponse(StringIO.StringIO):
     
     def ExistsInCache(cacheLocation, url):
         hash = md5.new(url).hexdigest()
-        return (os.path.exists(cacheLocation + "/" + hash + ".headers") and 
-                os.path.exists(cacheLocation + "/" + hash + ".body"))
+        return (os.path.exists(cacheLocation + os.sep + hash + ".headers") and 
+                os.path.exists(cacheLocation + os.sep + hash + ".body"))
     ExistsInCache = staticmethod(ExistsInCache)
 
     def StoreInCache(cacheLocation, url, response):
         hash = md5.new(url).hexdigest()
-        f = open(cacheLocation + "/" + hash + ".headers", "w")
+        f = open(cacheLocation + os.sep + hash + ".headers", "w")
         headers = str(response.info())
         f.write(headers)
         f.close()
-        f = open(cacheLocation + "/" + hash + ".body", "w")
+        f = open(cacheLocation + os.sep + hash + ".body", "w")
         f.write(response.read())
         f.close()
     StoreInCache = staticmethod(StoreInCache)
@@ -102,11 +102,11 @@ class CachedResponse(StringIO.StringIO):
     def __init__(self, cacheLocation,url,setCacheHeader=True):
         self.cacheLocation = cacheLocation
         hash = md5.new(url).hexdigest()
-        StringIO.StringIO.__init__(self, file(self.cacheLocation + "/" + hash+".body").read())
+        StringIO.StringIO.__init__(self, file(self.cacheLocation + os.sep + hash+".body").read())
         self.url     = url
         self.code    = 200
         self.msg     = "OK"
-        headerbuf = file(self.cacheLocation + "/" + hash+".headers").read()
+        headerbuf = file(self.cacheLocation + os.sep + hash+".headers").read()
         if setCacheHeader:
             headerbuf += "x-cache: %s/%s\r\n" % (self.cacheLocation,hash)
         self.headers = httplib.HTTPMessage(StringIO.StringIO(headerbuf))

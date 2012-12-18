@@ -43,7 +43,12 @@ def processDir():
                     booklang = metadata['BookLang']
                     bookpub = metadata['BookPub']
 
-                dest_path = authorname+'/'+bookname
+                try:
+                    os.chmod(os.path.join(lazylibrarian.DESTINATION_DIR, authorname).encode(lazylibrarian.SYS_ENCODING), 0777);
+                except Exception, e:
+                    logger.info("Could not chmod path: " + str(file2));
+
+                dest_path = authorname + os.sep + bookname
                 dic = {'<':'', '>':'', '=':'', '?':'', '"':'', ',':'', '*':'', ':':'', ';':'', '\'':''}
                 dest_path = formatter.latinToAscii(formatter.replace_all(dest_path, dic))
                 dest_path = os.path.join(lazylibrarian.DESTINATION_DIR, dest_path).encode(lazylibrarian.SYS_ENCODING)
@@ -116,7 +121,7 @@ def processDestination(pp_path=None, dest_path=None, authorname=None, bookname=N
 def processIMG(dest_path=None, bookimg=None):
     #handle pictures
     try:
-        if not bookimg == 'images/nocover.png':
+        if not bookimg == ('images' + os.sep + 'nocover.png'):
             logger.debug('Downloading cover from ' + bookimg)
             coverpath = os.path.join(dest_path, 'cover.jpg')
             img = open(coverpath,'wb')

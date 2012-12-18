@@ -34,7 +34,7 @@ input, select { vertical-align: middle; }
 
 body { font:12px/1.231 sans-serif; *font-size:small; }
 select, input, textarea, button { font:99% sans-serif; }
-pre, code, kbd, samp { font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif; }
+pre, code, kbd, samp {   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 html { overflow-y: scroll; }
 a:hover, a:active { outline: none; }
@@ -159,13 +159,39 @@ ul#subhead_menu li a:hover { width: 100%; height: 100%; background-color: #4D90F
 
 .button
 {
-    background-color: #EBEBEB;
-    border: 1px solid #CECECE;
-    padding:5px 5px 5px 5px; 
+    color: white !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    padding:5px 10px 5px 10px; 
     vertical-align: middle;
+    font-size:12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #49AFCD;
+    background-image: -ms-linear-gradient(top, #5BC0DE, #2F96B4);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5BC0DE), to(#2F96B4));
+    background-image: -webkit-linear-gradient(top, #5BC0DE, #2F96B4);
+    background-image: -o-linear-gradient(top, #5BC0DE, #2F96B4);
+    background-image: -moz-linear-gradient(top, #5BC0DE, #2F96B4);
+    background-image: linear-gradient(top, #5BC0DE, #2F96B4);
+    background-repeat: repeat-x;
+    border-color: #2F96B4 #2F96B4 #1F6377;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#5bc0de', endColorstr='#2f96b4', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    border-radius: 4px;
+    border:1px solid #5596a8;
 }
-.button a { color: black; font-size: 12px; text-decoration: none; }
-.button:hover { width: 100%; height: 100%; background-color: #4D90FE; border: 1px solid #3079ED; color: white !important; text-decoration: none;}
+.button a:link { color: white !important; font-size: 12px; text-decoration: none;}
+.button a:visited { color: white !important; font-size: 12px; text-decoration: none; }
+.button:hover { width: 100%; height: 100%; background-color: #5BC0DE; color: white !important; text-decoration: none;
+    background-color: #2F96B4;
+    background-image: -ms-linear-gradient(top, #2F96B4, #2F96B4);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2F96B4), to(#2F96B4));
+    background-image: -webkit-linear-gradient(top, #2F96B4, #2F96B4);
+    background-image: -o-linear-gradient(top, #2F96B4, #2F96B4);
+    background-image: -moz-linear-gradient(top, #2F96B4, #2F96B4);
+    background-image: linear-gradient(top, #2F96B4, #2F96B4);
+    background-repeat: repeat-x;
+}
 
 .addAuthor { margin-left:30px; line-height:30px;}
 
@@ -468,7 +494,7 @@ div#shutdown{ text-align: center; vertical-align: middle; }
 	max-width:250px;
 }
 #ajaxMsg .msg {
-  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: normal;
   padding-left: 20px;
 }
@@ -541,7 +567,7 @@ div#shutdown{ text-align: center; vertical-align: middle; }
 	max-width:250px;
 }
 #updatebar .msg {
-  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: normal;
   padding-left: 20px;
 min-width:100px;
