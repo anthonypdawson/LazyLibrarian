@@ -6,8 +6,8 @@
 <%def name="headerIncludes()">
     <div id="subhead_container">
         <ul id="subhead_menu">
-            <li><a href="shutdown" id="button">Shutdown</a></li>
-            <li><a href="restart" id="button">Restart</a></li>
+            <li><a onclick="self.shutdownQA(this)" id="button">Shutdown</a></li>
+            <li><a id="button" onclick="self.restartQA(this, '', '')">Restart</a></li>
             <li ><a id="button" href="checkForUpdates">Check for Updates</a></li>
         </ul>
     </div>
