@@ -222,29 +222,49 @@ class WebInterface(object):
 
 #BOOKS
     def openBook(self, bookLink=None, action=None, **args):
-		myDB = database.DBConnection()
-		
-		# find book
-		bookdata = myDB.select('SELECT * from books WHERE BookLink=\'' + bookLink + '\'')
-		logger.debug(('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
-		if bookdata:
-			authorName = bookdata[0]["AuthorName"];
-			bookName = bookdata[0]["BookName"];
+        myDB = database.DBConnection()
 
-			dic = {'<':'', '>':'', '=':'', '?':'', '"':'', ',':'', '*':'', ':':'', ';':'', '\'':''}
-			bookName = formatter.latinToAscii(formatter.replace_all(bookName, dic))
-			if (lazylibrarian.INSTALL_TYPE == 'win'):
-				dest_dir = lazylibrarian.DESTINATION_DIR + '\\' + authorName + '\\' + bookName
-			else:
-				dest_dir = lazylibrarian.DESTINATION_DIR + '//' + authorName + '//' + bookName
+        # find book
+        bookdata = myDB.select('SELECT * from books WHERE BookLink=\'' + bookLink + '\'')
+        logger.debug(('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
+        if bookdata:
+            authorName = bookdata[0]["AuthorName"];
+            bookName = bookdata[0]["BookName"];
 
-			logger.debug('bookdir ' + dest_dir);
-			if os.path.isdir(dest_dir):
-				for file2 in os.listdir(dest_dir):	
-					if ((file2.lower().find(".jpg") <= 0) & (file2.lower().find(".opf") <= 0)):
-						logger.info('Openning file ' + str(file2))
-						return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
+            dic = {'<':'', '>':'', '=':'', '?':'', '"':'', ',':'', '*':'', ':':'', ';':'', '\'':''}
+            bookName = formatter.latinToAscii(formatter.replace_all(bookName, dic))
+            if (lazylibrarian.INSTALL_TYPE == 'win'):
+                dest_dir = lazylibrarian.DESTINATION_DIR + '\\' + authorName + '\\' + bookName
+            else:
+                dest_dir = lazylibrarian.DESTINATION_DIR + '//' + authorName + '//' + bookName
+
+            logger.debug('bookdir ' + dest_dir);
+            if os.path.isdir(dest_dir):
+                for file2 in os.listdir(dest_dir):	
+                    if ((file2.lower().find(".jpg") <= 0) & (file2.lower().find(".opf") <= 0)):
+                        logger.info('Openning file ' + str(file2))
+                        return serve_file(os.path.join(dest_dir, file2), "application/x-download", "attachment")
     openBook.exposed = True
+
+    def searchForBook(self, bookLink=None, action=None, **args):
+        myDB = database.DBConnection()
+
+        # find book
+        bookdata = myDB.select('SELECT * from books WHERE BookLink=\'' + bookLink + '\'')
+        logger.debug(('SELECT * from books WHERE BookLink=\'' + bookLink + '\''))
+        if bookdata:
+            bookid = bookdata[0]["BookID"];
+            AuthorName = bookdata[0]["AuthorName"];
+
+            # start searchthreads
+            books = []
+            books.append({"bookid": bookid})
+
+            threading.Thread(target=searchbook, args=[books]).start()
+            logger.info("Searching for book with id: " + str(bookid));
+        if AuthorName:
+            raise cherrypy.HTTPRedirect("authorPage?AuthorName=%s" % AuthorName)
+    searchForBook.exposed = True
 
     def markBooks(self, AuthorName=None, action=None, **args):
         myDB = database.DBConnection()

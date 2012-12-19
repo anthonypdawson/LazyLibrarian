@@ -190,17 +190,11 @@ ul#subhead_menu li a:hover { width: 100%; height: 100%; background-color: #4D90F
 
 .button a:link { color: white !important; font-size: 12px; text-decoration: none;}
 .button a:visited { color: white !important; font-size: 12px; text-decoration: none; }
-.button:hover { width: 100%; height: 100%; background-color: #5BC0DE; color: white !important; text-decoration: none;
-    background-color: #2F96B4;
-    background-image: -ms-linear-gradient(top, #2F96B4, #2F96B4);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2F96B4), to(#2F96B4));
-    background-image: -webkit-linear-gradient(top, #2F96B4, #2F96B4);
-    background-image: -o-linear-gradient(top, #2F96B4, #2F96B4);
-    background-image: -moz-linear-gradient(top, #2F96B4, #2F96B4);
-    background-image: linear-gradient(top, #2F96B4, #f8a81d);
-    background-repeat: repeat-x;
+.button:hover { text-decoration: none; }
+.red:hover
+{
+    background: #000;
 }
-
 .red { 
     background-color: #ff1111;
     background-image: -ms-linear-gradient(top, #ec4648, #ff1111);
@@ -219,6 +213,22 @@ ul#subhead_menu li a:hover { width: 100%; height: 100%; background-color: #4D90F
     background-image: -moz-linear-gradient(top, #ffb940, #f8a81d);
     background-image: linear-gradient(top, #ffb940, #f8a81d);
 }
+.orange:hover
+{
+    background: #000;
+}
+.green {
+    background-color: #4e9302;
+    background-image: -ms-linear-gradient(top, #5da513, #4e9302);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5da513), to(#4e9302));
+    background-image: -webkit-linear-gradient(top, #5da513, #4e9302);
+    background-image: -o-linear-gradient(top, #5da513, #4e9302);
+    background-image: -moz-linear-gradient(top, #5da513, #4e9302);
+    background-image: linear-gradient(top, #5da513, #4e9302);
+}
+.green:hover{
+    background: #000;
+}
 .grey
 {
     background-color: #57616d;
@@ -229,8 +239,9 @@ ul#subhead_menu li a:hover { width: 100%; height: 100%; background-color: #4D90F
     background-image: -moz-linear-gradient(top, #777f8a, #57616d);
     background-image: linear-gradient(top, #777f8a, #57616d);
 }
-.question .answer:hover {
-    background: #000;
+.grey:hover
+{
+    background:#4C5766;
 }
 
 .addAuthor { margin-left:30px; line-height:30px;}
@@ -771,4 +782,24 @@ body > .spinner, .mask{
     color:white;
     text-align:left;
     border-bottom:1px solid black;
+}
+
+.button span.a {
+    display:inline-block;
+}
+.button:hover span.a {
+    display:none;
+}
+.button span.b {
+    display:none;
+}
+
+.button:hover span.b {
+    display:inline-block;
+}
+​
+.button
+{
+    display:inline-block;
+    vertical-align: middle;
 }
